@@ -39,7 +39,6 @@
       max-width: 700px;
     }
 
-  
     h1 {
       text-align: center;
       margin-bottom: 1.5rem;
@@ -66,52 +65,8 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    const ctx = document.getElementById('graficoAltura').getContext('2d');
-    const graficoAltura = new Chart(ctx, {
-      type: 'polarArea',
-      data: {
-        labels: ['150', '155', '160', '165', '170', '175', '180'],
-        datasets: [
-          {
-            label: 'Frecuencia de Altura (cm)',
-            data: [2, 4, 6, 10, 6, 4, 2],
-            backgroundColor: [
-              '#d5e8d4',
-              '#b7ddb0',
-              '#a8d5ba',
-              '#98c99f',
-              '#a8d5ba',
-              '#b7ddb0',
-              '#d5e8d4'
-            ],
-            borderWidth: 1
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'right',
-            labels: {
-              color: '#4b785c',
-              font: {
-                size: 14
-              }
-            }
-          },
-          tooltip: {
-            callbacks: {
-              label: function(context) {
-                return `Altura: ${context.label} cm - Frecuencia: ${context.formattedValue}`;
-              }
-            }
-          }
-        }
-      }
-    });
-  </script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="p4.js"></script>
 </body>
 </html>
 
