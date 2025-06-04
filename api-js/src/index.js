@@ -1,8 +1,8 @@
 require('dotenv').config(); // Carga variables de entorno al inicio
 const express = require('express');
 const app = express();
-const cors = require('cors');      // <-- Agrega esta línea
-app.use(cors());                  // <-- Y esta línea
+const cors = require('cors');
+app.use(cors());
 const apiRoutes = require('./routes/api');
 
 app.use(express.json());
