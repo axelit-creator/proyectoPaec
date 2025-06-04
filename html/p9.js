@@ -5,7 +5,6 @@ $(document).ready(function() {
         method: 'GET',
         dataType: 'json',
         success: function(datos) {
-            console.log(datos); // <-- Agrega esto
             const labels = datos.map(item => item.label);
             const valores = datos.map(item => item.valor);
 

@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gráfica de Riego por Árbol</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="p7.css">
   <style>
     :root {
       --verde-oscuro: #2E7D32;
@@ -55,6 +57,22 @@
       background-color: transparent !important;
     }
 
+    button {
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      color: #fff;
+      background-color: var(--verde-oscuro);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: var(--verde-1);
+    }
+
     @media (max-width: 480px) {
       h2 {
         font-size: 1.5rem;
@@ -70,51 +88,9 @@
     <canvas id="graficaRiego"></canvas>
   </div>
 
-  <script>
-    const ctx = document.getElementById('graficaRiego').getContext('2d');
+  <button onclick="window.location.href='home.html'">← Regresar a Home</button>
 
-    new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels: ['Roble', 'Pino', 'Álamo', 'Cedro'],
-        datasets: [{
-          label: 'Cantidad de riego (litros)',
-          data: [120, 90, 60, 100],
-          backgroundColor: [
-            '#388E3C',
-            '#66BB6A',
-            '#A5D6A7',
-            '#C8E6C9'
-          ],
-          borderColor: '#ffffff',
-          borderWidth: 3
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'bottom',
-            labels: {
-              color: '#2e3d2f',
-              font: {
-                size: 14
-              }
-            }
-          },
-          tooltip: {
-            callbacks: {
-              label: function(context) {
-                return `${context.label}: ${context.raw} litros`;
-              }
-            }
-          }
-        },
-        cutout: '60%'
-      }
-    });
-  </script>
-
+  <script src="p7.js"></script>
 </body>
 </html>
 
