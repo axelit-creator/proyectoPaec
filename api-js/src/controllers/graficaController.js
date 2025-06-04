@@ -1,41 +1,93 @@
-const pool = require('../config/db.js'); // Corrige la ruta según tu estructura
-
-const procedimientosPermitidos = [
-  'cantidadAlumnosPorTipoArbol',
-  'cantidadMonitoreosConPlagasDetectadas',
-  'cantidadArbolesPorMetodoRiego',
-  'cantidadArbolesPorTipo',
-  'modaAltura',
-  'modaTipoArboles',
-  'promedioAltura',
-  'promedioDiametroPorTipo',
-  'promedioPlantadosPorMes',
-  'cantidadRiegosPorArbol'
-];
-
-const obtenerDatos = (procedure, res) => {
-  if (!procedimientosPermitidos.includes(procedure)) {
-    return res.status(400).json({ error: 'Procedimiento no permitido' });
-  }
-  pool.query(`CALL ${procedure}()`)
-    .then(([rows]) => {
-      res.json(rows[0] || rows);
-    })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({ error: 'Error en la consulta' });
-    });
-};
+const pool = require('../config/db.js');
 
 module.exports = {
-  alumnosPorArbol: (req, res) => obtenerDatos('cantidadAlumnosPorTipoArbol', res),
-  cantidadPlagas: (req, res) => obtenerDatos('cantidadMonitoreosConPlagasDetectadas', res),
-  arbolesPorRiego: (req, res) => obtenerDatos('cantidadArbolesPorMetodoRiego', res),
-  cantidadArbolesTipo: (req, res) => obtenerDatos('cantidadArbolesPorTipo', res),
-  modaAltura: (req, res) => obtenerDatos('modaAltura', res),
-  modaTipoArbol: (req, res) => obtenerDatos('modaTipoArboles', res),
-  promedioAltura: (req, res) => obtenerDatos('promedioAltura', res),
-  promedioDiametro: (req, res) => obtenerDatos('promedioDiametroPorTipo', res),
-  promedioArbolesMes: (req, res) => obtenerDatos('promedioPlantadosPorMes', res),
-  riegoPorArbol: (req, res) => obtenerDatos('cantidadRiegosPorArbol', res)
+  alumnosPorArbol: (req, res) => {
+    pool.query('CALL cantidadAlumnosPorTipoArbol()')
+      .then(([rows]) => res.json(rows[0]))
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: 'Error al obtener alumnos por árbol' });
+      });
+  },
+
+  cantidadPlagas: (req, res) => {
+    pool.query('CALL cantidadMonitoreosConPlagasDetectadas()')
+      .then(([rows]) => res.json(rows[0]))
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: 'Error al obtener cantidad de plagas' });
+      });
+  },
+
+  arbolesPorRiego: (req, res) => {
+    pool.query('CALL cantidadArbolesPorMetodoRiego()')
+      .then(([rows]) => res.json(rows[0]))
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: 'Error al obtener árboles por riego' });
+      });
+  },
+
+  cantidadArbolesTipo: (req, res) => {
+    pool.query('CALL cantidadArbolesPorTipo()')
+      .then(([rows]) => res.json(rows[0]))
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: 'Error al obtener árboles por tipo' });
+      });
+  },
+
+  modaAltura: (req, res) => {
+    pool.query('CALL modaAltura()')
+      .then(([rows]) => res.json(rows[0]))
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: 'Error al obtener moda de altura' });
+      });
+  },
+
+  modaTipoArbol: (req, res) => {
+    pool.query('CALL modaTipoArboles()')
+      .then(([rows]) => res.json(rows[0]))
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: 'Error al obtener moda de tipo de árboles' });
+      });
+  },
+
+  promedioAltura: (req, res) => {
+    pool.query('CALL promedioAltura()')
+      .then(([rows]) => res.json(rows[0]))
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: 'Error al obtener promedio de altura' });
+      });
+  },
+
+  promedioDiametro: (req, res) => {
+    pool.query('CALL promedioDiametroPorTipo()')
+      .then(([rows]) => res.json(rows[0]))
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: 'Error al obtener promedio de diámetro' });
+      });
+  },
+
+  promedioArbolesMes: (req, res) => {
+    pool.query('CALL promedioPlantadosPorMes()')
+      .then(([rows]) => res.json(rows[0]))
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: 'Error al obtener promedio de árboles por mes' });
+      });
+  },
+
+  riegoPorArbol: (req, res) => {
+    pool.query('CALL cantidadRiegosPorArbol()')
+      .then(([rows]) => res.json(rows[0]))
+      .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: 'Error al obtener riegos por árbol' });
+      });
+  },
 };

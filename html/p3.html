@@ -3,112 +3,158 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moda de Tipos de Árboles</title>
+  <title>Pregunta #1 - Moda de Tipos de Árboles</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    :root {
+      --crema: #fffbe6;
+      --verde-suave: #a3c4a8;
+      --verde-oscuro: #2e4d40;
+      --verde-claro: #d0e6c9;
+      --verde-intermedio: #7fae96;
+      --verde-profundo: #355e4b;
+      --blanco: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background-color: #fdf6e3; /* crema claro */
-      color: #2e4d40; /* verde no muy oscuro */
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--crema);
+      color: var(--verde-oscuro);
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 1em;
+      min-height: 100vh;
+      padding: 2rem 1rem;
     }
 
-    h1 {
-      font-size: 1.5em;
-      margin-bottom: 1em;
+    header {
       text-align: center;
+      margin-bottom: 2rem;
     }
 
-    .chart-container {
+    header h1 {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    .chart-box {
+      background-color: var(--blanco);
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
       width: 100%;
-      max-width: 500px;
+      max-width: 600px;
     }
 
     canvas {
-      background: #fffaf0;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 100% !important;
+      height: auto !important;
     }
 
-    button {
-      background: linear-gradient(90deg, #2e9133 60%, #409c45 100%);
-      color: #fff;
-      border: none;
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(64,156,69,0.08);
-      font-weight: 500;
-      transition: background 0.3s, transform 0.2s;
+    .respuesta {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      background-color: var(--blanco);
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
-    button:hover {
-      background: linear-gradient(90deg, #409c45 60%, #2e9133 100%);
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.4rem;
+      }
+      .chart-box {
+        padding: 1rem;
+      }
+      .respuesta {
+        font-size: 1rem;
+        padding: 0.8rem 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>#3 Pregunta: ¿Cuál es la moda de los tipos de árboles?</h1>
-  <div class="chart-container">
+  <header>
+    <h1>🌳 #1 Pregunta: ¿Cuál es la moda de los tipos de árboles? 🌲</h1>
+  </header>
+
+  <div class="chart-box">
     <canvas id="graficoArboles"></canvas>
   </div>
 
-  <div style="margin-top: 2em;">
-    <button onclick="window.location.href='home.html'">← Regresar a Home</button>
-  </div>
+  <div class="respuesta" id="respuestaModa">🔍 Calculando la moda...</div>
 
   <script>
-async function cargarDatosYGraficar() {
-  const respuesta = await fetch('http://localhost:3000/api/modaTipoArbol');
-  const datos = await respuesta.json();
-  console.log(datos); // Para depuración
+    const tiposDeArboles = ['Roble', 'Pino', 'Cedro', 'Abeto', 'Roble', 'Roble', 'Pino'];
 
-  const labels = datos.map(item => item.label);
-  const valores = datos.map(item => item.valor);
+    const frecuencia = {};
+    tiposDeArboles.forEach(tipo => {
+      frecuencia[tipo] = (frecuencia[tipo] || 0) + 1;
+    });
 
-  const ctx = document.getElementById('graficoArboles').getContext('2d');
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: labels,
-      datasets: [{
-        label: 'Frecuencia',
-        data: valores,
-        backgroundColor: '#a3c4a8',
-        borderColor: '#2e4d40',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { display: false },
-        title: {
-          display: true,
-          text: 'Moda de Tipos de Árboles'
-        }
+    const labels = Object.keys(frecuencia);
+    const data = Object.values(frecuencia);
+
+    // Calcular la moda
+    const maxFrecuencia = Math.max(...data);
+    const modas = labels.filter((label, index) => data[index] === maxFrecuencia);
+
+    const respuestaElemento = document.getElementById('respuestaModa');
+    respuestaElemento.innerHTML = `✨ La moda es: <strong>${modas.join(', ')}</strong> con ${maxFrecuencia} apariciones. 🌟`;
+
+    const colores = [
+      'var(--verde-claro)',
+      'var(--verde-suave)',
+      'var(--verde-intermedio)',
+      'var(--verde-oscuro)',
+      'var(--verde-profundo)'
+    ];
+
+    const ctx = document.getElementById('graficoArboles').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: '📊 Frecuencia',
+          data: data,
+          backgroundColor: colores.slice(0, labels.length),
+          borderColor: 'var(--verde-oscuro)',
+          borderWidth: 1,
+          borderRadius: 8
+        }]
       },
-      scales: {
-        y: {
-          beginAtZero: true,
-          ticks: {
-            stepSize: 1
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: '📈 Moda de los tipos de árboles',
+            font: {
+              size: 18
+            }
+          },
+          legend: {
+            display: false
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              stepSize: 1
+            }
           }
         }
       }
-    }
-  });
-}
-
-document.addEventListener('DOMContentLoaded', cargarDatosYGraficar);
+    });
   </script>
 </body>
 </html>
-
-
