@@ -33,7 +33,7 @@ $(document).ready(function() {
           datasets: [{
             label: '📊 Frecuencia',
             data: data,
-            backgroundColor: colores.slice(0, labels.length),
+            backgroundColor: colores.slice(70, labels.length),
             borderColor: 'var(--verde-oscuro)',
             borderWidth: 1,
             borderRadius: 8

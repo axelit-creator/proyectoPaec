@@ -1,4 +1,3 @@
-// --- INICIO JQUERY + AJAX ---
 $(document).ready(function() {
   $.ajax({
     url: 'http://localhost:3000/api/promedioAltura',
@@ -13,7 +12,7 @@ $(document).ready(function() {
         data: {
           labels: labels,
           datasets: [{
-            label: 'Altura promedio (m)',
+            label: 'Altura promedio (cm)',
             data: valores,
             backgroundColor: '#81c784',
             borderRadius: 6,
@@ -61,4 +60,3 @@ $(document).ready(function() {
     }
   });
 });
-// --- FIN JQUERY + AJAX ---

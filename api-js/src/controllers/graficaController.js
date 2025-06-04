@@ -1,4 +1,4 @@
-const pool = require('../config/db.js'); // Corrige la ruta según tu estructura
+const pool = require('../config/db.js');
 
 const procedimientosPermitidos = [
   'cantidadAlumnosPorTipoArbol',
