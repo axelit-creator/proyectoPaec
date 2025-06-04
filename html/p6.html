@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>#6 Pregunta - Promedio mensual</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #388e3c;
+      font-size: 14px;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .titulo-con-icono {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .titulo-con-icono img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .grafica-container {
+      width: 100%;
+      max-width: 500px;
+      height: 400px;
+      background-color: #f0fdf4;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    button {
+      background: linear-gradient(90deg, #2e9133 60%, #409c45 100%);
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(64, 156, 69, 0.08);
+      font-weight: 500;
+      transition: background 0.3s, transform 0.2s;
+      margin-top: 30px;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .decoracion {
+      margin-top: 15px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="titulo-con-icono">
+    <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" alt="Arbolito">
+    <span>🌱 #6 ¿Cuál es el promedio de árboles plantados al mes?</span>
+  </div>
+
+  <div class="grafica-container">
+    <canvas id="grafico6"></canvas>
+  </div>
+
+  <div class="decoracion">🌿🌳🌿</div>
+
+  <button onclick="window.location.href='home.html'">← Regresar a Home</button>
+
+  <script src="p6.js"></script>
+</body>
+</html>

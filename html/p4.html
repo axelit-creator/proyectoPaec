@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregunta 1 - Moda de la Altura</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fdf6e3;
+            color: #2e563f;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        canvas {
+            max-width: 90vw;
+            max-height: 60vh;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+
+        .button-container {
+            margin-top: 2em;
+        }
+
+        .regresar-button {
+            background: linear-gradient(90deg, #2e9133 60%, #409c45 100%);
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(64,156,69,0.08);
+            font-weight: 500;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .regresar-button:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Cuál es la moda de la altura?</h1>
+    <canvas id="graficoAltura"></canvas>
+
+    <div class="button-container">
+        <button class="regresar-button" onclick="window.location.href='home.html'">← Regresar a Home</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // --- INICIO AJAX ---
+        async function cargarDatosYGraficar() {
+            // Cambia la URL por la de tu API real
+            const respuesta = await fetch('http://localhost:3000/api/modaAltura');
+            const datos = await respuesta.json();
+            // Supón que datos = [{label: "150", valor: 2}, ...]
+            const labels = datos.map(item => item.label);
+            const valores = datos.map(item => item.valor);
+
+            const ctx = document.getElementById('graficoAltura').getContext('2d');
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Frecuencia de Altura (cm)',
+                        data: valores,
+                        backgroundColor: 'rgba(163, 201, 168, 0.4)',
+                        borderColor: '#2e563f',
+                        pointBackgroundColor: '#2e563f',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                color: '#2e563f'
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return 'Frecuencia: ' + context.parsed.r;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            pointLabels: {
+                                color: '#2e563f',
+                                font: {
+                                    size: 14
+                                }
+                            },
+                            grid: {
+                                color: '#dcd2b4'
+                            },
+                            angleLines: {
+                                color: '#dcd2b4'
+                            },
+                            ticks: {
+                                color: '#2e563f'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        document.addEventListener('DOMContentLoaded', cargarDatosYGraficar);
+        // --- FIN AJAX ---
+    </script>
+</body>
+</html>

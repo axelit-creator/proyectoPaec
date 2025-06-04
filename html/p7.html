@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gráfica de Riego por Árbol</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --verde-oscuro: #2E7D32;
+      --verde-1: #388E3C;
+      --verde-2: #66BB6A;
+      --verde-3: #A5D6A7;
+      --verde-4: #C8E6C9;
+      --texto: #2e3d2f;
+      --fondo: #fdf6e3;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 1.5rem;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--fondo);
+      color: var(--texto);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: var(--verde-oscuro);
+      margin-bottom: 1.5rem;
+      background-color: var(--verde-4);
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .contenedor {
+      width: 100%;
+      max-width: 600px;
+      padding: 1rem;
+      background: transparent;
+      border-radius: 16px;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: auto !important;
+      background-color: transparent !important;
+    }
+
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>#7 ¿Cuál es la cantidad de riego por árbol?</h2>
+
+  <div class="contenedor">
+    <canvas id="graficaRiego"></canvas>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('graficaRiego').getContext('2d');
+
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Roble', 'Pino', 'Álamo', 'Cedro'],
+        datasets: [{
+          label: 'Cantidad de riego (litros)',
+          data: [120, 90, 60, 100],
+          backgroundColor: [
+            '#388E3C',
+            '#66BB6A',
+            '#A5D6A7',
+            '#C8E6C9'
+          ],
+          borderColor: '#ffffff',
+          borderWidth: 3
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              color: '#2e3d2f',
+              font: {
+                size: 14
+              }
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return `${context.label}: ${context.raw} litros`;
+              }
+            }
+          }
+        },
+        cutout: '60%'
+      }
+    });
+  </script>
+
+</body>
+</html>
+

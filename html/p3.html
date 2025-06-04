@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moda de Tipos de Árboles</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fdf6e3; /* crema claro */
+      color: #2e4d40; /* verde no muy oscuro */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1em;
+    }
+
+    h1 {
+      font-size: 1.5em;
+      margin-bottom: 1em;
+      text-align: center;
+    }
+
+    .chart-container {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    canvas {
+      background: #fffaf0;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    button {
+      background: linear-gradient(90deg, #2e9133 60%, #409c45 100%);
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(64,156,69,0.08);
+      font-weight: 500;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #409c45 60%, #2e9133 100%);
+    }
+  </style>
+</head>
+<body>
+  <h1>#3 Pregunta: ¿Cuál es la moda de los tipos de árboles?</h1>
+  <div class="chart-container">
+    <canvas id="graficoArboles"></canvas>
+  </div>
+
+  <div style="margin-top: 2em;">
+    <button onclick="window.location.href='home.html'">← Regresar a Home</button>
+  </div>
+
+  <script>
+async function cargarDatosYGraficar() {
+  const respuesta = await fetch('http://localhost:3000/api/modaTipoArbol');
+  const datos = await respuesta.json();
+  console.log(datos); // Para depuración
+
+  const labels = datos.map(item => item.label);
+  const valores = datos.map(item => item.valor);
+
+  const ctx = document.getElementById('graficoArboles').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Frecuencia',
+        data: valores,
+        backgroundColor: '#a3c4a8',
+        borderColor: '#2e4d40',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        title: {
+          display: true,
+          text: 'Moda de Tipos de Árboles'
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            stepSize: 1
+          }
+        }
+      }
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', cargarDatosYGraficar);
+  </script>
+</body>
+</html>
+
+
