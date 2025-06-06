@@ -31,14 +31,13 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function crearPopoverFijo(num, container, isLeft) {
-    const prev = container.querySelector('.popover-pregunta');
-    if (prev) prev.remove();
+    if (container.querySelector('.popover-pregunta')) container.querySelector('.popover-pregunta').remove();
     const popover = document.createElement('div');
     popover.className = 'popover-pregunta popover-fijo';
     popover.innerHTML = `
-      <button class="close-popover" type="button">×</button>
+      <button class="close-popover" onclick="cerrarPopoverFijo()">×</button>
       <h2>${preguntas[num]}</h2>
-      <button class="ver-grafica-btn" type="button" data-num="${num}">Ver Gráfica</button>
+      <button onclick="verGrafica(${num})">Ver Gráfica</button>
     `;
     if (isLeft) {
       popover.style.right = '110%';
@@ -58,23 +57,45 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
 
-  function verGrafica(num) {
-    if (num >= 1 && num <= 10) {
-      window.location.href = `p${num}.html`;
-    } else {
+  window.verGrafica = function(num) {
+    if (num == 1) {
+      window.location.href = 'p1.html';
+    }
+    else if (num == 2) {
+      window.location.href = 'p2.html';
+    }
+    else if (num == 3) {
+      window.location.href = 'p3.html';
+    }
+    else if (num == 4) {
+      window.location.href = 'p4.html';
+    }
+    else if (num == 5) {
+      window.location.href = 'p5.html';
+    }
+    else if (num == 6) {
+      window.location.href = 'p6.html';
+    }
+    else if (num == 7) {
+      window.location.href = 'p7.html';
+    }
+    else if (num == 8) {
+      window.location.href = 'p8.html';
+    }
+    else if (num == 9) {
+      window.location.href = 'p9.html';
+    }
+    else if (num == 10) {
+      window.location.href = 'p10.html';
+    }
+    else {
       alert("No hay gráfica disponible para esta pregunta.");
     }
-  }
+  };
 
-  // Elimina los onclick del HTML si existen (por si acaso)
-  document.querySelectorAll('.question-btn').forEach(btn => {
-    btn.removeAttribute('onclick');
-  });
-
-  // Eventos de hover y click para los botones
   document.querySelectorAll('.btn-container').forEach(container => {
     const btn = container.querySelector('.question-btn');
-    const num = btn.textContent.trim();
+    const num = btn.getAttribute('onclick').match(/\d+/)[0];
     const isLeft = container.classList.contains('left');
 
     container.addEventListener('mouseenter', () => {
@@ -90,6 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
+      // Elimina cualquier popover previo
       document.querySelectorAll('.popover-pregunta').forEach(p => {
         if (!p.classList.contains('popover-fijo')) p.remove();
       });
@@ -97,17 +119,6 @@ document.addEventListener('DOMContentLoaded', function() {
       popoverFijo = crearPopoverFijo(num, container, isLeft);
       popoverFijoContainer = container;
     });
-  });
-
-  // Delegación para los botones dentro del popover
-  document.body.addEventListener('click', function(e) {
-    if (e.target.classList.contains('close-popover')) {
-      window.cerrarPopoverFijo();
-    }
-    if (e.target.classList.contains('ver-grafica-btn')) {
-      const num = parseInt(e.target.getAttribute('data-num'), 10);
-      verGrafica(num);
-    }
   });
 
   document.addEventListener('click', function(e) {
@@ -119,18 +130,4 @@ document.addEventListener('DOMContentLoaded', function() {
       window.cerrarPopoverFijo();
     }
   });
-
-  // Por compatibilidad, si algún onclick queda en el HTML
-  window.mostrarPregunta = function(num) {
-    const btn = Array.from(document.querySelectorAll('.question-btn')).find(b => b.textContent.trim() === String(num));
-    if (!btn) return;
-    const container = btn.closest('.btn-container');
-    const isLeft = container.classList.contains('left');
-    if (popoverFijo) popoverFijo.remove();
-    document.querySelectorAll('.popover-pregunta').forEach(p => {
-      if (!p.classList.contains('popover-fijo')) p.remove();
-    });
-    popoverFijo = crearPopoverFijo(num, container, isLeft);
-    popoverFijoContainer = container;
-  };
 });
