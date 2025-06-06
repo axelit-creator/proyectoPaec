@@ -42,7 +42,6 @@ body {
   letter-spacing: 2px;
   color: var(--verde-oscuro);
   background: none;
-  -webkit-background-clip: unset;
   -webkit-text-fill-color: unset;
   text-shadow: none;
   display: inline-block;
