@@ -4,50 +4,8 @@
   <meta charset="UTF-8" />
   <title>Promedio de altura de los árboles</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      padding: 2em 1em;
-      text-align: center;
-    }
-
-    .grafico-container {
-      max-width: 400px;
-      margin: 0 auto;
-      background: #ffffff;
-      padding: 1em;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-
-    canvas {
-      height: 250px !important;
-    }
-
-    h2 {
-      font-size: 1rem;
-      margin-bottom: 1em;
-      color: #2e7d32;
-    }
-
-    button {
-      background: linear-gradient(90deg, #2e9133 60%, #409c45 100%);
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 14px;
-      cursor: pointer;
-      margin-top: 2em;
-      box-shadow: 0 2px 6px rgba(64,156,69,0.1);
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    button:hover {
-      transform: translateY(-2px);
-    }
-  </style>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="p1styles.css">
 </head>
 <body>
   <div class="grafico-container">
@@ -55,68 +13,8 @@
     <canvas id="graficoP1"></canvas>
   </div>
   <div>
-    <button onclick="window.location.href='home.html'">← Regresar a Home</button>
+    <button onclick="window.location.href='index.html'">← Regresar a Home</button>
   </div>
-  <script>
-  // --- INICIO AJAX ---
-  async function cargarDatosYGraficar() {
-    const respuesta = await fetch('http://localhost:3000/api/promedioAltura');
-    const datos = await respuesta.json();
-    const labels = datos.map(item => item.label);
-    const valores = datos.map(item => item.valor);
-
-    new Chart(document.getElementById('graficoP1'), {
-      type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Altura promedio (m)',
-          data: valores,
-          backgroundColor: '#81c784',
-          borderRadius: 6,
-          barPercentage: 0.5,
-          categoryPercentage: 0.5
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false },
-          title: {
-            display: false
-          },
-          tooltip: {
-            callbacks: {
-              label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y} m`
-            }
-          }
-        },
-        scales: {
-          y: {
-            ticks: {
-              font: { size: 12 },
-              color: '#4caf50'
-            },
-            grid: {
-              color: '#e0e0e0'
-            }
-          },
-          x: {
-            ticks: {
-              font: { size: 12 },
-              color: '#4caf50'
-            },
-            grid: {
-              display: false
-            }
-          }
-        }
-      }
-    });
-  }
-  document.addEventListener('DOMContentLoaded', cargarDatosYGraficar);
-  // --- FIN AJAX ---
-  </script>
+  <script src="p1script.js"></script>
 </body>
 </html>

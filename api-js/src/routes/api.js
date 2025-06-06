@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const graficaController = require('../controllers/graficaController');
 
-// Rutas para los diferentes endpoints de gráficas
+
 router.get('/alumnosPorArbol', graficaController.alumnosPorArbol);
 router.get('/cantidadPlagas', graficaController.cantidadPlagas);
 router.get('/arbolesPorRiego', graficaController.arbolesPorRiego);
