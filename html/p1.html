@@ -2,19 +2,113 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Promedio de altura de los árboles</title>
+  <title>🌳 Promedio de altura de los árboles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Chart.js y jQuery -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <link rel="stylesheet" href="p1styles.css">
+
+  <!-- Tipografía moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #dfe1ff;
+      font-family: 'Poppins', sans-serif;
+      color: #00086d;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #c5c7ff;
+      width: 100%;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-bottom: 3px solid #8a8dff;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .imagen-arbol {
+      width: 60px;
+      margin-top: 15px;
+    }
+
+    .grafico-container {
+      background-color: #ffffff;
+      margin-top: 40px;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+      width: 90%;
+      max-width: 700px;
+      position: relative;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 400px !important;
+    }
+
+    button {
+      margin: 40px 0;
+      background: linear-gradient(90deg, #00086d, #3f51b5);
+      color: white;
+      border: none;
+      padding: 14px 30px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      font-size: 18px;
+      color: #3f51b5;
+      margin-bottom: 20px;
+    }
+
+    .decoracion-arbolitos {
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 80px;
+      opacity: 0.4;
+    }
+  </style>
 </head>
 <body>
+
+  <header>
+    <h1>🌳 Promedio de altura de los árboles 🌳</h1>
+    <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" alt="Árbol" class="imagen-arbol">
+  </header>
+
   <div class="grafico-container">
-    <h2>1. Promedio de altura de los árboles</h2>
     <canvas id="graficoP1"></canvas>
+    <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" alt="Árbol decorativo" class="decoracion-arbolitos">
   </div>
-  <div>
-    <button onclick="window.location.href='index.html'">← Regresar a Home</button>
-  </div>
+
+  <button onclick="window.location.href='index.html'">← Regresar a Home</button>
+
+  <footer>📏 Visualización interactiva en tiempo real</footer>
+
   <script src="p1script.js"></script>
 </body>
 </html>

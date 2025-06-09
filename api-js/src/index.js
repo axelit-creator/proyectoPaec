@@ -4,7 +4,7 @@ const app = express();
 const cors = require('cors');
 
 // Permitir solo localhost y 127.0.0.1
-const allowedOrigins = ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001'];
+const allowedOrigins = ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:3001', 'http://127.0.0.1:3001', 'https://proyectoPaec.onrender.com', 'https://proyectoPaecservicio.onrender.com'];
 app.use(cors({
   origin: function(origin, callback) {
     // Permitir peticiones sin origin (como Postman) o si está en la lista
