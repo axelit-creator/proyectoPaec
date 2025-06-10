@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $.ajax({
-    url: 'http://localhost:3000/api/promedioAltura',
+    url: 'http://localhost:3000/api/grafica/promedioAltura',
     method: 'GET',
     dataType: 'json',
     success: function(datos) {

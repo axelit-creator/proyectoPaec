@@ -1,7 +1,7 @@
 // --- INICIO JQUERY + AJAX ---
 $(document).ready(function() {
   $.ajax({
-    url: 'http://localhost:3000/api/riegoPorArbol',
+    url: 'http://localhost:3000/api/grafica/riegoPorArbol',
     method: 'GET',
     dataType: 'json',
     success: function(datos) {

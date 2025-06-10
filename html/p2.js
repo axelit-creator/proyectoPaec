@@ -1,11 +1,10 @@
 // --- INICIO JQUERY + AJAX ---
 $(document).ready(function() {
   $.ajax({
-    url: 'http://localhost:3000/api/arbolesPorRiego',
+    url: 'http://localhost:3000/api/grafica/arbolesPorRiego',
     method: 'GET',
     dataType: 'json',
     success: function(datos) {
-      // datos = [{label: "Goteo", valor: 50}, ...]
       const labels = datos.map(item => item.label);
       const valores = datos.map(item => item.valor);
 
@@ -31,7 +30,6 @@ $(document).ready(function() {
         }
       });
 
-      // Leyenda personalizada
       let leyendaHtml = '';
       labels.forEach((label, i) => {
         leyendaHtml += `<span><span class="color-box" style="background:${colores[i % colores.length]}"></span>${label}</span>`;

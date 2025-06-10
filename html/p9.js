@@ -1,12 +1,13 @@
 // --- INICIO JQUERY + AJAX ---
 $(document).ready(function() {
     $.ajax({
-        url: 'http://localhost:3000/api/cantidadPlagas',
+        url: 'http://localhost:3000/api/grafica/cantidadPlagas',
         method: 'GET',
         dataType: 'json',
         success: function(datos) {
-            const labels = datos.map(item => item.label);
-            const valores = datos.map(item => item.valor);
+            // Adaptación para la respuesta esperada
+            const labels = ['Monitoreos con plagas'];
+            const valores = [datos[0].CantidadMonitoreosConPlagas];
 
             const ctx = document.getElementById('grafico').getContext('2d');
             new Chart(ctx, {
@@ -34,7 +35,7 @@ $(document).ready(function() {
                         },
                         title: {
                             display: true,
-                            text: 'Cantidad de monitoreos por mes',
+                            text: 'Cantidad de monitoreos con plagas detectadas',
                             color: '#3a5a40',
                             font: { size: 18 }
                         }

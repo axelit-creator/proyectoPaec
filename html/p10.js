@@ -1,13 +1,13 @@
 // --- INICIO JQUERY + AJAX ---
 $(document).ready(function() {
   $.ajax({
-    url: 'http://localhost:3000/api/alumnosPorArbol',
+    url: 'http://localhost:3000/api/grafica/alumnosPorArbol',
     method: 'GET',
     dataType: 'json',
     success: function(datos) {
-      console.log(datos); // <-- Agrega esto para ver los datos recibidos
-      const labels = datos.map(item => item.label);
-      const valores = datos.map(item => item.valor);
+      // Adaptación para la respuesta esperada
+      const labels = datos.map(item => 'Tipo ' + item.TipoArbol);
+      const valores = datos.map(item => item.CantidadAlumnos);
 
       const ctx = document.getElementById('treeChart').getContext('2d');
       new Chart(ctx, {

@@ -2,7 +2,7 @@
 async function cargarDatosYGraficar() {
   try {
     // Usa el endpoint correcto según tu backend
-    const respuesta = await fetch('http://localhost:3000/api/promedioArbolesMes');
+    const respuesta = await fetch('http://localhost:3000/api/grafica/promedioArbolesMes');
     const datos = await respuesta.json();
     // Ejemplo esperado: [{ label: "Enero", valor: 80 }, ...]
 
