@@ -40,7 +40,7 @@ $(document).ready(function() {
             tooltip: {
               callbacks: {
                 label: function(context) {
-                  return ${context.label}: ${context.raw} litros;
+                  return context.label + ': ' + context.raw + ' litros';
                 }
               }
             }
