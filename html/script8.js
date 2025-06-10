@@ -1,21 +1,20 @@
 // --- INICIO JQUERY + AJAX ---
 $(document).ready(function() {
   $.ajax({
-    url: 'http://localhost:3000/api/grafica/riegoPorArbol',
+    url: 'http://localhost:3000/api/grafica/cantidadArbolesTipo',
     method: 'GET',
     dataType: 'json',
     success: function(datos) {
-      // datos = [{label: "Roble", valor: 120}, ...]
       const labels = datos.map(item => item.label);
       const valores = datos.map(item => item.valor);
 
-      const ctx = document.getElementById('graficaRiego').getContext('2d');
+      const ctx = document.getElementById('graficaBarras').getContext('2d');
       new Chart(ctx, {
-        type: 'doughnut',
+        type: 'bar',
         data: {
           labels: labels,
           datasets: [{
-            label: 'Cantidad de riego (litros)',
+            label: 'Cantidad de árboles',
             data: valores,
             backgroundColor: [
               '#388E3C',
@@ -24,28 +23,33 @@ $(document).ready(function() {
               '#C8E6C9'
             ],
             borderColor: '#ffffff',
-            borderWidth: 3
+            borderWidth: 1
           }]
         },
         options: {
+          indexAxis: 'y', // barras horizontales
           responsive: true,
           plugins: {
-            legend: {
-              position: 'bottom',
-              labels: {
-                color: '#2e3d2f',
-                font: { size: 14 }
-              }
-            },
+            legend: { display: false },
             tooltip: {
               callbacks: {
                 label: function(context) {
-                  return ${context.label}: ${context.raw} litros;
+                  return ${context.parsed.x} árboles;
                 }
               }
             }
           },
-          cutout: '60%'
+          scales: {
+            x: {
+              beginAtZero: true,
+              ticks: { color: '#2e3d2f' },
+              grid: { color: '#e0e0e0' }
+            },
+            y: {
+              ticks: { color: '#2e3d2f' },
+              grid: { color: '#f5f5f5' }
+            }
+          }
         }
       });
     },
