@@ -4,91 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>#6 Pregunta - Promedio mensual</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #ffffff;
-      color: #388e3c;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      justify-content: center;
-    }
-
-    .card {
-      background: rgba(240, 253, 244, 0.8);
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-      backdrop-filter: blur(6px);
-      max-width: 600px;
-      width: 90%;
-      text-align: center;
-    }
-
-    .titulo {
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .titulo img {
-      width: 40px;
-      height: 40px;
-    }
-
-    canvas {
-      margin-top: 10px;
-      width: 100% !important;
-      height: 350px !important;
-    }
-
-    button {
-      margin-top: 25px;
-      background: linear-gradient(90deg, #2e9133 0%, #409c45 100%);
-      color: #fff;
-      border: none;
-      padding: 12px 26px;
-      font-size: 16px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: 500;
-      box-shadow: 0 4px 10px rgba(64, 156, 69, 0.2);
-      transition: transform 0.2s ease;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-    }
-
-    .decoracion {
-      font-size: 26px;
-      margin-top: 16px;
-    }
-  </style>
+  <link rel="stylesheet" href="pgstyless.css">
 </head>
 <body>
-
   <div class="card">
     <div class="titulo">
       <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" alt="Arbolito">
       <span>🌱 #6 ¿Cuál es el promedio de árboles plantados al mes?</span>
     </div>
-
     <canvas id="grafico6"></canvas>
-
     <div class="decoracion">🌿🌳🌿</div>
     <button onclick="window.location.href='index.html'">← Regresar a Home</button>
   </div>
-
-  <script src="p6.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script6.js"></script>
 </body>
+</html>
