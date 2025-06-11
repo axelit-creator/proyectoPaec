@@ -5,46 +5,49 @@ $(document).ready(function() {
     method: 'GET',
     dataType: 'json',
     success: function(datos) {
-      // datos = [{ label: "Roble 🌳", valor: 120 }, ...]
       const labels = datos.map(item => item.label);
       const valores = datos.map(item => item.valor);
 
-      const ctx5 = document.getElementById('grafico5').getContext('2d');
-      new Chart(ctx5, {
+      const ctx = document.getElementById('graficaBarras').getContext('2d');
+      new Chart(ctx, {
         type: 'bar',
         data: {
           labels: labels,
           datasets: [{
             label: 'Cantidad de árboles',
             data: valores,
-            backgroundColor: ['#66bb6a', '#81c784', '#a5d6a7', '#c8e6c9'],
-            borderColor: '#2e7d32',
-            borderWidth: 1,
-            borderRadius: 8,
-            hoverBackgroundColor: '#43a047'
+            backgroundColor: [
+              '#388E3C',
+              '#66BB6A',
+              '#A5D6A7',
+              '#C8E6C9'
+            ],
+            borderColor: '#ffffff',
+            borderWidth: 1
           }]
         },
         options: {
+          indexAxis: 'y', // barras horizontales
           responsive: true,
-          maintainAspectRatio: false,
           plugins: {
-            legend: {
-              display: true,
-              labels: {
-                color: '#2e7d32',
-                font: { size: 14 }
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return ${context.parsed.x} árboles;
+                }
               }
             }
           },
           scales: {
-            y: {
-              beginAtZero: true,
-              ticks: { color: '#2e7d32' },
-              grid: { color: '#e0f2f1' }
-            },
             x: {
-              ticks: { color: '#2e7d32' },
-              grid: { color: '#f1f8e9' }
+              beginAtZero: true,
+              ticks: { color: '#2e3d2f' },
+              grid: { color: '#e0e0e0' }
+            },
+            y: {
+              ticks: { color: '#2e3d2f' },
+              grid: { color: '#f5f5f5' }
             }
           }
         }
