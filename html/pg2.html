@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cantidad de árboles por método de riego</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="p2.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding: 2em 1em;
+      text-align: center;
+    }
+
+    .grafico-container {
+      max-width: 400px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 1em;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    canvas {
+      height: 250px !important;
+    }
+
+    h2 {
+      font-size: 1rem;
+      margin-bottom: 1em;
+      color: #2e7d32;
+    }
+
+    .leyenda {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1em;
+      gap: 1em;
+      font-size: 0.9rem;
+    }
+
+    .color-box {
+      width: 12px;
+      height: 12px;
+      display: inline-block;
+      margin-right: 0.4em;
+      border-radius: 3px;
+    }
+
+    button {
+      background: linear-gradient(90deg, #2e9133 60%, #409c45 100%);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 2em;
+      box-shadow: 0 2px 6px rgba(64, 156, 69, 0.1);
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="grafico-container">
+    <h2>2. Cantidad de árboles por método de riego</h2>
+    <canvas id="graficoP2"></canvas>
+    <div class="leyenda" id="leyendaRiego"></div>
+  </div>
+  <button onclick="window.location.href='index.html'">← Regresar a Home</button>
+  <script src="p2.js"></script>
+</body>
+</html>
