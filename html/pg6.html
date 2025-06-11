@@ -87,8 +87,82 @@
     <canvas id="grafico6"></canvas>
 
     <div class="decoracion">🌿🌳🌿</div>
-    <button onclick="window.location.href='index.html'">← Regresar a Home</button>
+    <button onclick="window.location.href='home.html'">← Regresar a Home</button>
   </div>
 
-  <script src="p6.js"></script>
+  <script>
+    function cargarGraficaConAJAX() {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', 'http://localhost:3000/api/promedioMensual', true);
+
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          const datos = JSON.parse(xhr.responseText);
+          const labels = datos.map(item => item.label);
+          const valores = datos.map(item => item.valor);
+
+          const ctx = document.getElementById('grafico6').getContext('2d');
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: labels,
+              datasets: [{
+                label: 'Promedio mensual 🌿',
+                data: valores,
+                backgroundColor: '#66bb6a',
+                borderRadius: 10,
+                barThickness: 40
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              animation: {
+                duration: 1000,
+                easing: 'easeOutBounce'
+              },
+              plugins: {
+                legend: {
+                  display: false
+                }
+              },
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  ticks: {
+                    color: '#388e3c',
+                    font: { size: 14 }
+                  },
+                  grid: {
+                    color: '#e0f2f1'
+                  }
+                },
+                x: {
+                  ticks: {
+                    color: '#388e3c',
+                    font: { size: 14 }
+                  },
+                  grid: {
+                    color: '#f0f0f0'
+                  }
+                }
+              }
+            }
+          });
+        } else {
+          console.error("Error en AJAX:", xhr.statusText);
+        }
+      };
+
+      xhr.onerror = function () {
+        console.error("Error de red en AJAX.");
+      };
+
+      xhr.send();
+    }
+
+    document.addEventListener('DOMContentLoaded', cargarGraficaConAJAX);
+  </script>
+
 </body>
+</html>
