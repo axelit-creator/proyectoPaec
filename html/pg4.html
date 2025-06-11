@@ -4,69 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Moda de la Altura</title>
-  <style>
-    :root {
-      --crema: #fdf6e3;
-      --verde: #4b785c;
-      --verde-claro: #a8d5ba;
-      --sombra: rgba(0, 0, 0, 0.1);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: var(--crema);
-      color: var(--verde);
-      font-family: 'Helvetica Neue', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      min-height: 100vh;
-    }
-
-    .container {
-      background: white;
-      border-radius: 1rem;
-      box-shadow: 0 8px 24px var(--sombra);
-      padding: 2rem;
-      width: 100%;
-      max-width: 700px;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
-      color: var(--verde);
-    }
-
-    canvas {
-      width: 100% !important;
-      height: auto !important;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.5rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="pgstyless.css">
 </head>
 <body>
   <div class="container">
     <h1>¿Cuál es la moda de la altura?</h1>
     <canvas id="graficoModa"></canvas>
   </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="p4.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script4.js"></script>
 </body>
 </html>
 

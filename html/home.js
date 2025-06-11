@@ -59,34 +59,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
   window.verGrafica = function(num) {
     if (num == 1) {
-      window.location.href = 'p1.html';
+      window.location.href = 'pg1.html';
     }
     else if (num == 2) {
-      window.location.href = 'p2.html';
+      window.location.href = 'pg2.html';
     }
     else if (num == 3) {
-      window.location.href = 'p3.html';
+      window.location.href = 'pg3.html';
     }
     else if (num == 4) {
-      window.location.href = 'p4.html';
+      window.location.href = 'pg4.html';
     }
     else if (num == 5) {
-      window.location.href = 'p5.html';
+      window.location.href = 'pg5.html';
     }
     else if (num == 6) {
-      window.location.href = 'p6.html';
+      window.location.href = 'pg6.html';
     }
     else if (num == 7) {
-      window.location.href = 'p7.html';
+      window.location.href = 'pg7.html';
     }
     else if (num == 8) {
-      window.location.href = 'p8.html';
+      window.location.href = 'pg8.html';
     }
     else if (num == 9) {
-      window.location.href = 'p9.html';
+      window.location.href = 'pg9.html';
     }
     else if (num == 10) {
-      window.location.href = 'p10.html';
+      window.location.href = 'pg10.html';
     }
     else {
       alert("No hay gráfica disponible para esta pregunta.");
