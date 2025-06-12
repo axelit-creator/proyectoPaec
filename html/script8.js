@@ -34,7 +34,7 @@ $(document).ready(function() {
             tooltip: {
               callbacks: {
                 label: function(context) {
-                  return ${context.parsed.x} árboles;
+                  return `${context.parsed.x} árboles`;
                 }
               }
             }
