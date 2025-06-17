@@ -1,0 +1,145 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Georgia', serif;
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+/* Fondo principal */
+.background {
+  background-image: url('fondo1.jpg'); /* Aquí puedes usar tu imagen personalizada */
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 60px 80px;
+  max-width: 1000px;
+  width: 90%;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+  transition: all 0.8s ease;
+}
+
+h1 {
+  font-size: 38px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.subtitulo {
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.info-grid {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 15px;
+}
+
+.info-grid > div {
+  flex: 1 1 250px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.explicacion {
+  margin-top: 40px;
+  font-size: 16px;
+  background: rgba(255,255,255,0.12);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: justify;
+}
+
+.desliza {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 30px;
+}
+
+/* Árbol animado */
+.arbolito {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  animation: flotar 3s ease-in-out infinite;
+}
+
+.arbolito img {
+  width: 80px;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}
+
+@keyframes flotar {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Sección de gráficas */
+.charts-section {
+  background-image: url('fondo2.jpg'); /* Aquí va la otra imagen */
+  background-size: cover;
+  background-position: center;
+  color: #1e1e1e;
+  padding: 100px 30px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.charts-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.charts-section h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+.button-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.button-group button {
+  padding: 12px 30px;
+  font-size: 16px;
+  background-color: white;
+  border: 2px solid #4CAF50;
+  color: #4CAF50;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button-group button:hover {
+  background-color: #4CAF50;
+  color: white;
+}
