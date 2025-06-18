@@ -7,16 +7,19 @@
   <link rel="stylesheet" href="pgstyless.css">
 </head>
 <body>
-  <div class="card">
-    <div class="titulo">
-      <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" alt="Arbolito">
-      <span>🌱 #6 ¿Cuál es el promedio de árboles plantados al mes?</span>
-    </div>
-    <canvas id="grafico6"></canvas>
-    <div class="decoracion">🌿🌳🌿</div>
-    <button onclick="window.location.href='index.html'">← Regresar a Home</button>
+  <header>
+    <h1>🌱 #6 ¿Cuál es el promedio de árboles plantados al mes?</h1>
+  </header>
+
+  <div class="grafico-container">
+    <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" alt="Icono árbol" width="60" style="margin-bottom: 1em;">
+    <canvas id="grafico6" style="width: 100%; height: 100%;"></canvas>
   </div>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <button onclick="window.location.href='index.html'">← Regresar a Home</button>
+
+  <footer>🌿🌳🌿</footer>
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="script6.js"></script>
 </body>
