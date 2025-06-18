@@ -1,42 +1,112 @@
+/* General */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  padding: 2em 1em;
+  font-family: 'Poppins', sans-serif;
+  background-image: url('https://a-static.besthdwallpaper.com/green-leaves-with-black-shadow-wallpaper-2560x1600-78534_7.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Encabezado */
+header {
   text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  padding: 40px 20px 20px;
+  border-radius: 20px;
+  margin: 30px auto 10px;
+  max-width: 800px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
 }
 
+header h1 {
+  font-size: 28px;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  margin-bottom: 15px;
+}
+
+.imagen-arbol {
+  width: 60px;
+}
+
+/* Contenedor de la gráfica */
 .grafico-container {
-  max-width: 400px;
-  margin: 0 auto;
-  background: #ffffff;
-  padding: 1em;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 900px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  position: relative;
+  height: 400px;
 }
 
-canvas {
-  height: 250px !important;
+/* Decorativo */
+.decoracion-arbolitos {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  opacity: 0.8;
 }
 
-h2 {
-  font-size: 1rem;
-  margin-bottom: 1em;
-  color: #2e7d32;
-}
-
+/* Botón de regreso */
 button {
-  background: linear-gradient(90deg, #2e9133 60%, #409c45 100%);
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid #4CAF50;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 30px;
   cursor: pointer;
-  margin-top: 2em;
-  box-shadow: 0 2px 6px rgba(64,156,69,0.1);
-  transition: background 0.3s, transform 0.2s;
+  transition: all 0.3s ease;
+  display: block;
+  margin: 30px auto;
+  backdrop-filter: blur(6px);
 }
 
 button:hover {
-  transform: translateY(-2px);
+  background-color: #4CAF50;
+  color: white;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+/* Pie de página */
+footer {
+  text-align: center;
+  font-size: 14px;
+  color: #e0f2f1;
+  margin: 30px 0;
+  opacity: 0.8;
+}
+
+/* Animación de entrada */
+@keyframes fadeZoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.grafico-container {
+  animation: fadeZoomIn 1s ease forwards;
+  opacity: 0; /* Se mostrará al terminar la animación */
+  transform: scale(0.95) translateY(30px);
 }
