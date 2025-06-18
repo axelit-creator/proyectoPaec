@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pregunta 9</title>
-    <link rel="stylesheet" href="pgstyless.css">
+  <meta charset="UTF-8">
+  <title>🌿 Monitoreos con Plagas Detectadas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Estilos y fuentes -->
+  <link rel="stylesheet" href="pgstyless.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Chart.js y jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-    <h1>9. ¿Cuál es la cantidad de monitoreos con plagas detectadas?</h1>
-    <div id="grafico-container">
-        <canvas id="grafico"></canvas>
-    </div>
-    <div style="margin-top: 2em;">
-        <button onclick="window.location.href='index.html'" class="btn-regresar">
-            ← Regresar a Home
-        </button>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script9.js"></script>
+  <header>
+    <h1>🪲 Monitoreos con plagas detectadas</h1>
+    <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" alt="Icono plaga" class="imagen-arbol">
+  </header>
+
+  <div class="grafico-container">
+    <canvas id="grafico"></canvas>
+    <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" alt="Decorativo" class="decoracion-arbolitos">
+  </div>
+
+  <button onclick="window.location.href='index.html'">← Regresar a Home</button>
+
+  <footer>📊 Datos obtenidos en tiempo real desde la API</footer>
+
+  <script src="script9.js"></script>
 </body>
 </html>
