@@ -1,7 +1,7 @@
 $(document).ready(function() {
   // Primer endpoint
   $.ajax({
-    url: 'https://equipo-7.onrender.com/api/grafica/promedioAltura',
+    url: 'https://equipo-7-servicios.onrender.com/api/grafica/promedioAltura',
     method: 'GET',
     dataType: 'json',
     success: function(datos) {
@@ -63,7 +63,7 @@ $(document).ready(function() {
 
   // Segundo endpoint
   $.ajax({
-    url: 'http://localhost:3000/api/grafica/promedioDiametro',
+    url: 'https://equipo-7-servicios.onrender.com/api/grafica/promedioDiametro',
     method: 'GET',
     dataType: 'json',
     success: function(datos) {

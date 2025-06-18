@@ -1,7 +1,7 @@
 // --- INICIO JQUERY + AJAX ---
 $(document).ready(function() {
   $.ajax({
-    url: 'http://localhost:3000/api/grafica/alumnosPorArbol',
+    url: 'https://equipo-7-servicios.onrender.com/api/grafica/alumnosPorArbol',
     method: 'GET',
     dataType: 'json',
     success: function(datos) {
