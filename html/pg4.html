@@ -3,17 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Moda de la Altura</title>
-  <link rel="stylesheet" href="pgstyless.css">
+  <title>Pregunta 4 - Moda de la Altura</title>
+  <link rel="stylesheet" href="pgstyless.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>¿Cuál es la moda de la altura?</h1>
-    <canvas id="graficoModa"></canvas>
-  </div>
+
+  <header>
+    <h1>📏 Pregunta 4: ¿Cuál es la moda de la altura?</h1>
+  </header>
+
+  <main>
+    <div class="grafico-container">
+      <canvas id="graficoModa"></canvas>
+    </div>
+
+    <button onclick="window.history.back()">⬅ Regresar</button>
+  </main>
+
+  <footer>
+    <p>Proyecto Sembrando y Educando PAEC 🌱</p>
+  </footer>
+
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="script4.js"></script>
 </body>
 </html>
-
