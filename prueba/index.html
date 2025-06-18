@@ -7,34 +7,22 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Sección de presentación -->
   <div class="background">
     <div class="card">
-      <main>
+
+      <!-- MENÚ -->
+      <nav class="menu">
+        <button onclick="mostrarSeccion('inicio')">Inicio</button>
+        <button onclick="mostrarSeccion('creditos')">Créditos</button>
+        <button onclick="mostrarSeccion('paec')">Más sobre PAEC</button>
+      </nav>
+
+      <!-- SECCIÓN INICIO -->
+      <section id="inicio" class="seccion visible">
         <h1>
           Sembrando y educando “PAEC” <br>
           <span class="subtitulo">Proyecto final</span>
         </h1>
-
-        <div class="info-grid">
-          <div>
-            <strong>Créditos a:</strong><br>
-            Axel Gabriel Reyes Narvaez<br>
-            Emily Yamilet Hernández González<br>
-            Estefani Ramírez Andrés<br>
-            Gabriel Samuel Márquez Cano<br>
-            Mauricio Herrera Hernández
-          </div>
-          <div>
-            <strong>Proyecto final</strong><br>
-            Profesor: Lic. Jorge Cortés Domínguez
-          </div>
-          <div>
-            <strong>Materia:</strong><br>
-            Bases de datos Relacionales
-          </div>
-        </div>
-
         <div class="explicacion">
           <p>
             Este proyecto tiene como objetivo demostrar el uso de bases de datos relacionales mediante
@@ -43,32 +31,57 @@
             mejorar la experiencia del usuario. 🌿
           </p>
         </div>
-
-        <div class="desliza">Desliza hacia abajo 👇</div>
-
         <div class="arbolito">
           <img src="https://cdn-icons-png.flaticon.com/512/2431/2431891.png" alt="Árbol" />
         </div>
-      </main>
+        <div class="centrado">
+          <button class="accion" onclick="verGraficas()">Ver gráficas 📊</button>
+        </div>
+      </section>
+
+      <!-- SECCIÓN CRÉDITOS -->
+      <section id="creditos" class="seccion oculto centrado creditos-grande">
+        <h2>👥 Créditos</h2>
+        <p><strong>Integrantes:</strong><br>
+          Axel Gabriel Reyes Narvaez<br>
+          Emily Yamilet Hernández González<br>
+          Estefani Ramírez Andrés<br>
+          Gabriel Samuel Márquez Cano<br>
+          Mauricio Herrera Hernández
+        </p>
+        <p><strong>Profesor:</strong><br>
+          <span class="profesor-destacado">Lic. Jorge Cortés Domínguez</span>
+        </p>
+      </section>
+
+      <!-- SECCIÓN MÁS SOBRE PAEC -->
+      <section id="paec" class="seccion oculto">
+        <h2>🌱 Más sobre PAEC</h2>
+        <p>El proyecto “Sembrando y Educando PAEC” nace de la necesidad de concientizar a la comunidad escolar sobre la importancia del medio ambiente, integrando la educación ambiental con actividades prácticas y participativas. Su propósito es fomentar hábitos sostenibles y una cultura ecológica desde las aulas, promoviendo el respeto por la naturaleza, el trabajo colaborativo y la participación activa de estudiantes, docentes y familias para fortalecer el vínculo entre el aula,la escuela y la comunidad.</p>
+      </section>
+
+      <!-- SECCIÓN GRÁFICAS -->
+      <section id="graficas" class="seccion oculto">
+        <h2>🌳 Gráficas de las Consultas 📊 🌱</h2>
+        <div class="button-group">
+          <button onclick="window.location.href='pg1.html'">Ir a Gráfica 1</button>
+          <button onclick="window.location.href='pg2.html'">Ir a Gráfica 2</button>
+          <button onclick="window.location.href='pg3.html'">Ir a Gráfica 3</button>
+          <button onclick="window.location.href='pg4.html'">Ir a Gráfica 4</button>
+          <button onclick="window.location.href='pg5.html'">Ir a Gráfica 5</button>
+          <button onclick="window.location.href='pg6.html'">Ir a Gráfica 6</button>
+          <button onclick="window.location.href='pg7.html'">Ir a Gráfica 7</button>
+          <button onclick="window.location.href='pg8.html'">Ir a Gráfica 8</button>
+          <button onclick="window.location.href='pg9.html'">Ir a Gráfica 9</button>
+          <button onclick="window.location.href='pg10.html'">Ir a Gráfica 10</button>
+        </div>
+        <div class="centrado">
+          <button class="volver" onclick="mostrarSeccion('inicio')">⬅ Volver a inicio</button>
+        </div>
+      </section>
+
     </div>
   </div>
-
-  <!-- Sección de gráficas -->
-  <section class="charts-section" id="charts">
-    <h2>🌳 Gráficas de las Consultas 📊 🌱</h2>
-    <div class="button-group">
-      <button>1 🌱</button>
-      <button>2 🌱</button>
-      <button>3 🌱</button>
-      <button>4 🌱</button>
-      <button>5 🌱</button>
-      <button>6 🌱</button>
-      <button>7 🌱</button>
-      <button>8 🌱</button>
-      <button>9 🌱</button>
-      <button>10 🌱</button>
-    </div>
-  </section>
 
   <script src="script.js"></script>
 </body>

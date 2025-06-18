@@ -2,76 +2,85 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Graficas Proyecto</title>
-  <link rel="stylesheet" href="home.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sembrando y educando PAEC</title>
+  <link rel="stylesheet" href="home.css" />
 </head>
 <body>
+  <div class="background">
+    <div class="card">
 
-  <div class="titulo">
-    <h1>🌳 Graficas de las Consultas📊 </h1>
-    <div class="linea"></div>
-  </div>
+      <!-- MENÚ -->
+      <nav class="menu">
+        <button onclick="mostrarSeccion('inicio')">Inicio</button>
+        <button onclick="mostrarSeccion('creditos')">Créditos</button>
+        <button onclick="mostrarSeccion('paec')">Más sobre PAEC</button>
+      </nav>
 
-  <div class="main-content">
-    <div class="grid">
-      <div class="btn-container left">
-        <button class="question-btn" onclick="mostrarPregunta(1)">1</button>
-        <div class="tooltip">¿Cual es el promedio de altura de los arboles?</div>
-      </div>                                                              
-      <div class="btn-container right">
-        <button class="question-btn" onclick="mostrarPregunta(2)">2</button>
-        <div class="tooltip">¿Cual es la cantidad de arboles por metodo de riego?</div>
-      </div>
+      <!-- SECCIÓN INICIO -->
+      <section id="inicio" class="seccion visible">
+        <h1>
+          Sembrando y educando “PAEC” <br>
+          <span class="subtitulo">Proyecto final</span>
+        </h1>
+        <div class="explicacion">
+          <p>
+            Este proyecto tiene como objetivo demostrar el uso de bases de datos relacionales mediante
+            la creación de un entorno educativo virtual enfocado en la concientización ecológica.
+            Incluye múltiples consultas SQL, gráficas interactivas y contenidos visuales pensados para
+            mejorar la experiencia del usuario. 🌿
+          </p>
+        </div>
+        <div class="arbolito">
+          <img src="https://cdn-icons-png.flaticon.com/512/2431/2431891.png" alt="Árbol" />
+        </div>
+        <div class="centrado">
+          <button class="accion" onclick="verGraficas()">Ver gráficas 📊</button>
+        </div>
+      </section>
 
-      <div class="btn-container left">
-        <button class="question-btn" onclick="mostrarPregunta(3)">3</button>
-        <div class="tooltip">¿Cual es la moda de los tipos de arboles?</div>
-      </div>
-      <div class="btn-container right">
-        <button class="question-btn" onclick="mostrarPregunta(4)">4</button>
-        <div class="tooltip">¿Cual es la moda de la altura?</div>
-      </div>
+      <!-- SECCIÓN CRÉDITOS -->
+      <section id="creditos" class="seccion oculto centrado creditos-grande">
+        <h2>👥 Créditos</h2>
+        <p><strong>Integrantes:</strong><br>
+          Axel Gabriel Reyes Narvaez<br>
+          Emily Yamilet Hernández González<br>
+          Estefani Ramírez Andrés<br>
+          Gabriel Samuel Márquez Cano<br>
+          Mauricio Herrera Hernández
+        </p>
+        <p><strong>Profesor:</strong><br>
+          <span class="profesor-destacado">Lic. Jorge Cortés Domínguez</span>
+        </p>
+      </section>
 
-      <div class="btn-container left">
-        <button class="question-btn" onclick="mostrarPregunta(5)">5</button>
-        <div class="tooltip">¿Cual es la cantidad de arboles por tipo?</div>
-      </div>
-      <div class="btn-container right">
-        <button class="question-btn" onclick="mostrarPregunta(6)">6</button>
-        <div class="tooltip">¿Cual es el promedio de arboles plantados al mes?</div>
-      </div>
+      <!-- SECCIÓN MÁS SOBRE PAEC -->
+      <section id="paec" class="seccion oculto">
+        <h2>🌱 Más sobre PAEC</h2>
+        <p>El proyecto “Sembrando y Educando PAEC” nace de la necesidad de concientizar a la comunidad escolar sobre la importancia del medio ambiente, integrando la educación ambiental con actividades prácticas y participativas. Su propósito es fomentar hábitos sostenibles y una cultura ecológica desde las aulas, promoviendo el respeto por la naturaleza, el trabajo colaborativo y la participación activa de estudiantes, docentes y familias para fortalecer el vínculo entre el aula,la escuela y la comunidad.</p>
+      </section>
 
-      <div class="btn-container left">
-        <button class="question-btn" onclick="mostrarPregunta(7)">7</button>
-        <div class="tooltip">¿Cual es la cantidad de riego por arbol?</div>
-      </div>
-      <div class="btn-container right">
-        <button class="question-btn" onclick="mostrarPregunta(8)">8</button>
-        <div class="tooltip">¿Cual es el promedio de diametro por tipo de arbol?</div>
-      </div>
+      <!-- SECCIÓN GRÁFICAS -->
+      <section id="graficas" class="seccion oculto">
+        <h2>🌳 Gráficas de las Consultas 📊 🌱</h2>
+        <div class="button-group">
+          <button onclick="window.location.href='pg1.html'">Ir a Gráfica 1</button>
+          <button onclick="window.location.href='pg2.html'">Ir a Gráfica 2</button>
+          <button onclick="window.location.href='pg3.html'">Ir a Gráfica 3</button>
+          <button onclick="window.location.href='pg4.html'">Ir a Gráfica 4</button>
+          <button onclick="window.location.href='pg5.html'">Ir a Gráfica 5</button>
+          <button onclick="window.location.href='pg6.html'">Ir a Gráfica 6</button>
+          <button onclick="window.location.href='pg7.html'">Ir a Gráfica 7</button>
+          <button onclick="window.location.href='pg8.html'">Ir a Gráfica 8</button>
+          <button onclick="window.location.href='pg9.html'">Ir a Gráfica 9</button>
+          <button onclick="window.location.href='pg10.html'">Ir a Gráfica 10</button>
+        </div>
+        <div class="centrado">
+          <button class="volver" onclick="mostrarSeccion('inicio')">⬅ Volver a inicio</button>
+        </div>
+      </section>
 
-      <div class="btn-container left">
-        <button class="question-btn" onclick="mostrarPregunta(9)">9</button>
-        <div class="tooltip">¿Cual es la cantidad de monitoreos con plagas detectadas?</div>
-      </div>
-      <div class="btn-container right">
-        <button class="question-btn" onclick="mostrarPregunta(10)">10</button>
-        <div class="tooltip">¿Cual es la cantidad de alumnos asignados a cada tipo de arbol?</div>
-      </div>
     </div>
-  </div>
-
-  <div class="info-bar">
-    <div class="creditos">
-      Créditos a:<br>
-      Axel Gabriel Reyes Narvaez<br>
-      Emily Yamilet Hernandez Gonzalez<br>
-      Estefani Ramirez Andres<br>
-      Gabriel Samuel Marquez Cano<br>
-      Mauricio Herrera Hernandez
-    </div>
-    <div class="proyecto">Proyecto final Profesor: Lic. Jorge Cortés Domínguez </div>
-       <div class = "proyecto"> Materia: Bases de datos Relacionales</div>
   </div>
 
   <script src="home.js"></script>

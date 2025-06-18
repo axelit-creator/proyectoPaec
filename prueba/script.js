@@ -1,14 +1,30 @@
-window.addEventListener('scroll', () => {
-  const card = document.querySelector('.card');
-  const charts = document.querySelector('.charts-section');
+function mostrarSeccion(id) {
+  const activa = document.getElementById(id);
+  const secciones = document.querySelectorAll('.seccion');
 
-  if (window.scrollY > 150) {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(-50px)';
-    charts.classList.add('visible');
-  } else {
-    card.style.opacity = '1';
-    card.style.transform = 'translateY(0)';
-    charts.classList.remove('visible');
-  }
-});
+  // Oculta todas con animación de salida
+  secciones.forEach(seccion => {
+    if (seccion.classList.contains('visible')) {
+      seccion.classList.add('fade-out');
+      seccion.classList.remove('fade-in');
+      
+      // Espera a que termine la animación antes de ocultar
+      setTimeout(() => {
+        seccion.classList.remove('visible');
+        seccion.classList.add('oculto');
+        seccion.classList.remove('fade-out');
+      }, 500);
+    }
+  });
+
+  // Después de un momento, muestra la nueva sección
+  setTimeout(() => {
+    activa.classList.remove('oculto');
+    activa.classList.add('visible');
+    activa.classList.add('fade-in');
+  }, 550);
+}
+
+function verGraficas() {
+  mostrarSeccion('graficas');
+}
