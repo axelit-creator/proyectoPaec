@@ -2,74 +2,78 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sembrando y educando PAEC</title>
-  <link rel="stylesheet" href="home.css" />
+  <title>Graficas Proyecto</title>
+  <link rel="stylesheet" href="home.css">
 </head>
 <body>
-  <!-- Sección de presentación -->
-  <div class="background">
-    <div class="card">
-      <main>
-        <h1>
-          Sembrando y educando “PAEC” <br>
-          <span class="subtitulo">Proyecto final</span>
-        </h1>
 
-        <div class="info-grid">
-          <div>
-            <strong>Créditos a:</strong><br>
-            Axel Gabriel Reyes Narvaez<br>
-            Emily Yamilet Hernández González<br>
-            Estefani Ramírez Andrés<br>
-            Gabriel Samuel Márquez Cano<br>
-            Mauricio Herrera Hernández
-          </div>
-          <div>
-            <strong>Proyecto final</strong><br>
-            Profesor: Lic. Jorge Cortés Domínguez
-          </div>
-          <div>
-            <strong>Materia:</strong><br>
-            Bases de datos Relacionales
-          </div>
-        </div>
+  <div class="titulo">
+    <h1>🌳 Graficas de las Consultas📊 </h1>
+    <div class="linea"></div>
+  </div>
 
-        <div class="explicacion">
-          <p>
-            Este proyecto tiene como objetivo demostrar el uso de bases de datos relacionales mediante
-            la creación de un entorno educativo virtual enfocado en la concientización ecológica.
-            Incluye múltiples consultas SQL, gráficas interactivas y contenidos visuales pensados para
-            mejorar la experiencia del usuario. 🌿
-          </p>
-        </div>
+  <div class="main-content">
+    <div class="grid">
+      <div class="btn-container left">
+        <button class="question-btn" onclick="mostrarPregunta(1)">1</button>
+        <div class="tooltip">¿Cual es el promedio de altura de los arboles?</div>
+      </div>                                                              
+      <div class="btn-container right">
+        <button class="question-btn" onclick="mostrarPregunta(2)">2</button>
+        <div class="tooltip">¿Cual es la cantidad de arboles por metodo de riego?</div>
+      </div>
 
-        <div class="desliza">Desliza hacia abajo 👇</div>
+      <div class="btn-container left">
+        <button class="question-btn" onclick="mostrarPregunta(3)">3</button>
+        <div class="tooltip">¿Cual es la moda de los tipos de arboles?</div>
+      </div>
+      <div class="btn-container right">
+        <button class="question-btn" onclick="mostrarPregunta(4)">4</button>
+        <div class="tooltip">¿Cual es la moda de la altura?</div>
+      </div>
 
-        <div class="arbolito">
-          <img src="arbol.png" alt="Árbol" />
-        </div>
-      </main>
+      <div class="btn-container left">
+        <button class="question-btn" onclick="mostrarPregunta(5)">5</button>
+        <div class="tooltip">¿Cual es la cantidad de arboles por tipo?</div>
+      </div>
+      <div class="btn-container right">
+        <button class="question-btn" onclick="mostrarPregunta(6)">6</button>
+        <div class="tooltip">¿Cual es el promedio de arboles plantados al mes?</div>
+      </div>
+
+      <div class="btn-container left">
+        <button class="question-btn" onclick="mostrarPregunta(7)">7</button>
+        <div class="tooltip">¿Cual es la cantidad de riego por arbol?</div>
+      </div>
+      <div class="btn-container right">
+        <button class="question-btn" onclick="mostrarPregunta(8)">8</button>
+        <div class="tooltip">¿Cual es el promedio de diametro por tipo de arbol?</div>
+      </div>
+
+      <div class="btn-container left">
+        <button class="question-btn" onclick="mostrarPregunta(9)">9</button>
+        <div class="tooltip">¿Cual es la cantidad de monitoreos con plagas detectadas?</div>
+      </div>
+      <div class="btn-container right">
+        <button class="question-btn" onclick="mostrarPregunta(10)">10</button>
+        <div class="tooltip">¿Cual es la cantidad de alumnos asignados a cada tipo de arbol?</div>
+      </div>
     </div>
   </div>
 
-  <!-- Sección de gráficas -->
-  <section class="charts-section" id="charts">
-    <h2>🌳 Gráficas de las Consultas 📊 🌱</h2>
-    <div class="button-group">
-      <a href="pg1.html"><button>1 🌱</button></a>
-      <a href="pg2.html"><button>2 🌱</button></a>
-      <a href="pg3.html"><button>3 🌱</button></a>
-      <a href="pg4.html"><button>4 🌱</button></a>
-      <a href="pg5.html"><button>5 🌱</button></a>
-      <a href="pg6.html"><button>6 🌱</button></a>
-      <a href="pg7.html"><button>7 🌱</button></a>
-      <a href="pg8.html"><button>8 🌱</button></a>
-      <a href="pg9.html"><button>9 🌱</button></a>
-      <a href="pg10.html"><button>10 🌱</button></a>
+  <div class="info-bar">
+    <div class="creditos">
+      Créditos a:<br>
+      Axel Gabriel Reyes Narvaez<br>
+      Emily Yamilet Hernandez Gonzalez<br>
+      Estefani Ramirez Andres<br>
+      Gabriel Samuel Marquez Cano<br>
+      Mauricio Herrera Hernandez
     </div>
-  </section>
+    <div class="proyecto">Proyecto final Profesor: Lic. Jorge Cortés Domínguez </div>
+       <div class = "proyecto"> Materia: Bases de datos Relacionales</div>
+  </div>
 
-  <script src="script.js"></script>
+  <script src="home.js"></script>
 </body>
 </html>

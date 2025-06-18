@@ -8,7 +8,7 @@ body, html {
 
 /* Fondo principal */
 .background {
-  background-image: url('fondo1.jpg'); /* Aquí puedes usar tu imagen personalizada */
+  background-image: url('https://a-static.besthdwallpaper.com/green-leaves-with-black-shadow-wallpaper-2560x1600-78534_7.jpg');
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -17,6 +17,7 @@ body, html {
   align-items: center;
 }
 
+/* Contenedor de bienvenida */
 .card {
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(12px);
@@ -58,6 +59,7 @@ h1 {
   border: 1px solid rgba(255,255,255,0.2);
 }
 
+/* Texto explicativo */
 .explicacion {
   margin-top: 40px;
   font-size: 16px;
@@ -67,37 +69,27 @@ h1 {
   text-align: justify;
 }
 
+/* Árbol decorativo */
+.arbolito {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+.arbolito img {
+  width: 60px;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}
+
+/* Texto desliza */
 .desliza {
   text-align: center;
   font-size: 18px;
   margin-top: 30px;
 }
 
-/* Árbol animado */
-.arbolito {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  animation: flotar 3s ease-in-out infinite;
-}
-
-.arbolito img {
-  width: 80px;
-  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
-}
-
-@keyframes flotar {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
 /* Sección de gráficas */
 .charts-section {
-  background-image: url('fondo2.jpg'); /* Aquí va la otra imagen */
+  background-image: url('https://img.freepik.com/vector-gratis/fondo-tropical-vegetacion-vegetal_23-2148525904.jpg?semt=ais_hybrid&w=740');
   background-size: cover;
   background-position: center;
   color: #1e1e1e;
