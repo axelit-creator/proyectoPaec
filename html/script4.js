@@ -1,7 +1,7 @@
 // --- INICIO JQUERY + AJAX ---
 $(document).ready(function() {
   $.ajax({
-    url: 'https://equipo-7-servicios.onrender.com/api/modaTipoArbol',
+    url: 'https://equipo-7-servicios.onrender.com/api/grafica/modaTipoArbol',
     method: 'GET',
     dataType: 'json',
     success: function(datos) {

@@ -60,6 +60,4 @@ $(document).ready(function() {
       alert('Error al cargar promedioAltura: ' + error);
     }
   });
-
-  // Puedes seguir agregando más peticiones AJAX aquí
 });
