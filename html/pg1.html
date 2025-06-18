@@ -2,35 +2,90 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>🌳 Promedio de altura de los árboles</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Chart.js y jQuery -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-  <!-- Tipografía moderna -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- Estilos -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gráfica de Riego</title>
   <link rel="stylesheet" href="pgstyless.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
+  <!-- Encabezado -->
   <header>
-    <h1>🌳 Promedio de altura de los árboles 🌳</h1>
+    <h1>Cantidad de árboles por método de riego</h1>
     <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" alt="Árbol" class="imagen-arbol">
   </header>
 
+  <!-- Contenedor principal con gráfica -->
   <div class="grafico-container">
-    <canvas id="graficoP1"></canvas>
-    <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" alt="Árbol decorativo" class="decoracion-arbolitos">
+    <canvas id="graficoRiego"></canvas>
+    <img src="https://cdn-icons-png.flaticon.com/512/2909/2909765.png" alt="Decoración de árboles" class="decoracion-arbolitos">
   </div>
 
-  <button onclick="window.location.href='index.html'">← Regresar a Home</button>
+  <!-- Botón de regreso -->
+  <button onclick="window.history.back()">Regresar</button>
 
-  <footer>📏 Visualización interactiva en tiempo real</footer>
+  <!-- Pie de página -->
+  <footer>
+    &copy; 2025 Sembrando y Educando PAEC. Todos los derechos reservados.
+  </footer>
 
-  <script src="script1.js"></script>
+  <!-- JS para Chart.js -->
+  <script>
+    const ctx = document.getElementById('graficoRiego').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Goteo', 'Aspersión', 'Manual', 'Automático'],
+        datasets: [{
+          label: 'Árboles',
+          data: [14, 18, 9, 12],
+          backgroundColor: [
+            'rgba(76, 175, 80, 0.6)',
+            'rgba(102, 187, 106, 0.6)',
+            'rgba(129, 199, 132, 0.6)',
+            'rgba(165, 214, 167, 0.6)'
+          ],
+          borderRadius: 10,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+            titleColor: '#2e7d32',
+            bodyColor: '#2e7d32',
+            borderColor: '#2e7d32',
+            borderWidth: 1
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              color: '#ffffff'
+            },
+            grid: {
+              color: 'rgba(255,255,255,0.1)'
+            }
+          },
+          x: {
+            ticks: {
+              color: '#ffffff'
+            },
+            grid: {
+              display: false
+            }
+          }
+        }
+      }
+    });
+  </script>
+
 </body>
 </html>
