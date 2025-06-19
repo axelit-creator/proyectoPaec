@@ -1,7 +1,7 @@
 // --- INICIO JQUERY + AJAX ---
 $(document).ready(function() {
   $.ajax({
-    url: 'https://equipo-7-servicios.onrender.com/api/grafica/riegoPorArbol',
+    url: 'https://equipo-7-servicios.onrender.com/api/grafica/riegosPorMetodo', // Cambia la URL si aplica
     method: 'GET',
     dataType: 'json',
     success: function(datos) {
@@ -12,6 +12,21 @@ $(document).ready(function() {
       });
       const labels = Object.keys(conteo);
       const valores = Object.values(conteo);
+
+      // Calcular la moda
+      const max = Math.max(...valores);
+      const modas = labels.filter((label, i) => valores[i] === max);
+
+      // Mostrar la moda debajo de la gráfica
+      if ($('#moda-riego').length === 0) {
+        $('#graficoP7').after(
+          `<div id="moda-riego" style="color:#388e3c; font-weight:bold; margin-top:10px; text-align:right;">
+            Moda: ${modas.join(', ')} (${max} riegos)
+          </div>`
+        );
+      } else {
+        $('#moda-riego').html(`Moda: ${modas.join(', ')} (${max} riegos)`);
+      }
 
       const colores = [
         '#388e3c', '#66bb6a', '#81c784', '#a5d6a7', '#b2dfdb', '#aed581',
@@ -33,39 +48,22 @@ $(document).ready(function() {
           responsive: true,
           plugins: {
             legend: { display: false },
-            title: { display: true, text: 'Cantidad de riegos por Método' }
+            title: { display: true, text: 'Cantidad de riegos por método' }
           },
           scales: {
-            x: {
-              title: {
-                display: true,
-                text: 'Método de Riego',
-                color: '#2e3d2f',
-                font: { size: 16, weight: 'bold' }
-              },
-              ticks: {
-                color: '#2e3d2f',
-                font: { size: 14 }
-              }
-            },
             y: {
-              title: {
-                display: true,
-                text: 'Cantidad',
-                color: '#2e3d2f',
-                font: { size: 16, weight: 'bold' }
-              },
-              ticks: {
-                color: '#2e3d2f',
-                font: { size: 14 }
-              }
+              beginAtZero: true,
+              title: { display: true, text: 'Cantidad' }
+            },
+            x: {
+              title: { display: true, text: 'Método de riego' }
             }
           }
         }
       });
     },
-    error: function(xhr, status, error) {
-      alert('Error al cargar los datos: ' + error);
+    error: function() {
+      alert('Error al cargar los datos.');
     }
   });
 });
