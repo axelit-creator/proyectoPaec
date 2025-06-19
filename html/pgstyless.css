@@ -105,8 +105,43 @@ footer {
   }
 }
 
+/* Ajustes para centrar el contenido dentro del contenedor de la gráfica */
 .grafico-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente todo el contenido */
+  justify-content: center; /* Centra verticalmente si es necesario */
+  position: relative; /* Ya lo tienes para la decoración */
+  height: 450px; /* Un poco más alto para que quepa todo cómodo */
+  padding-bottom: 60px; /* Da espacio para botón y texto */
+  /* El resto de estilos que ya tienes */
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 900px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
   animation: fadeZoomIn 1s ease forwards;
-  opacity: 0; /* Se mostrará al terminar la animación */
+  opacity: 0;
   transform: scale(0.95) translateY(30px);
 }
+
+#graficoP2 {
+  max-width: 100%;
+  max-height: 300px;
+  /* Deja que el canvas se ajuste al contenedor y quede centrado */
+}
+
+/* Centrar el texto info-riego */
+#info-riego {
+  margin-top: 15px;
+  font-size: 18px;
+  text-align: center;
+  font-weight: 600;
+  color: #dff0d8;
+  text-shadow: 0 0 5px #3a7d3a;
+  width: 100%;
+}
+
+/* El botón ya está centrado con margin: auto, perfecto */

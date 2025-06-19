@@ -1,56 +1,61 @@
-// --- INICIO AJAX ---
-async function cargarDatosYGraficar() {
-  try {
-    // Usa el endpoint correcto según tu backend
-    const respuesta = await fetch('https://equipo-7-servicios.onrender.com/api/grafica/promedioArbolesMes');
-    const datos = await respuesta.json();
-    // Ejemplo esperado: [{ label: "Enero", valor: 80 }, ...]
+$(document).ready(function () {
+  $.ajax({
+    url: 'https://equipo-7-servicios.onrender.com/api/grafica/promedioArbolesMes',
+    method: 'GET',
+    dataType: 'json',
+    success: function (datos) {
+      // Formatear el mes a "Mes Año"
+      const meses = [
+        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+      ];
+      const labels = datos.map(item => {
+        const [anio, mes] = item.mesSiembra.split("-");
+        return `${meses[parseInt(mes, 10) - 1]} ${anio}`;
+      });
+      const valores = datos.map(item => item.cantidadPlantados);
 
-    const labels = datos.map(item => item.label);
-    const valores = datos.map(item => item.valor);
+      // Calcular el promedio
+      const suma = valores.reduce((acc, val) => acc + val, 0);
+      const promedio = (suma / valores.length).toFixed(2);
 
-    const ctx6 = document.getElementById('grafico6').getContext('2d');
-    new Chart(ctx6, {
-      type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Promedio mensual 🌿',
-          data: valores,
-          backgroundColor: ['#388e3c', '#66bb6a', '#81c784', '#a5d6a7'],
-          borderColor: '#ffffff',
-          borderWidth: 1,
-          borderRadius: 8
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            labels: {
-              color: '#388e3c',
-              font: { size: 14 }
+      // Mostrar el promedio a un lado de la gráfica
+      if ($('#promedio-plantados').length === 0) {
+        $('#graficoP6').after(`<div id="promedio-plantados" style="color:#388e3c; font-weight:bold; margin-top:10px; text-align:right;">Promedio mensual: ${promedio} 🌱</div>`);
+      } else {
+        $('#promedio-plantados').html(`Promedio mensual: ${promedio} 🌱`);
+      }
+
+      const colores = [
+        '#388e3c', '#66bb6a', '#81c784', '#a5d6a7', '#b2dfdb', '#aed581'
+      ];
+
+      new Chart(document.getElementById('graficoP6'), {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Árboles plantados',
+            data: valores,
+            backgroundColor: colores.slice(0, labels.length)
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            title: { display: false }
+          },
+          scales: {
+            y: {
+              beginAtZero: true
             }
           }
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-            ticks: { color: '#388e3c' },
-            grid: { color: '#e0e0e0' }
-          },
-          x: {
-            ticks: { color: '#388e3c' },
-            grid: { color: '#f0f0f0' }
-          }
         }
-      }
-    });
-  } catch (error) {
-    console.error("Error al cargar los datos:", error);
-  }
-}
-
-document.addEventListener('DOMContentLoaded', cargarDatosYGraficar);
-// --- FIN AJAX ---
+      });
+    },
+    error: function () {
+      alert('Error al cargar los datos.');
+    }
+  });
+});

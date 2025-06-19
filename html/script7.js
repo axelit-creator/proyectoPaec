@@ -5,47 +5,62 @@ $(document).ready(function() {
     method: 'GET',
     dataType: 'json',
     success: function(datos) {
-      // datos = [{label: "Roble", valor: 120}, ...]
-      const labels = datos.map(item => item.label);
-      const valores = datos.map(item => item.valor);
+      // Agrupar y contar por método de riego
+      const conteo = {};
+      datos.forEach(item => {
+        conteo[item.metodoRiego] = (conteo[item.metodoRiego] || 0) + 1;
+      });
+      const labels = Object.keys(conteo);
+      const valores = Object.values(conteo);
 
-      const ctx = document.getElementById('graficaRiego').getContext('2d');
-      new Chart(ctx, {
-        type: 'doughnut',
+      const colores = [
+        '#388e3c', '#66bb6a', '#81c784', '#a5d6a7', '#b2dfdb', '#aed581',
+        '#fbc02d', '#ffb300', '#ff7043', '#8d6e63', '#789262', '#4dd0e1',
+        '#9575cd', '#f06292', '#ba68c8', '#e57373', '#ffd54f', '#dce775'
+      ];
+
+      new Chart(document.getElementById('graficoP7'), {
+        type: 'bar',
         data: {
           labels: labels,
           datasets: [{
-            label: 'Cantidad de riego (litros)',
+            label: 'Cantidad de riegos',
             data: valores,
-            backgroundColor: [
-              '#388E3C',
-              '#66BB6A',
-              '#A5D6A7',
-              '#C8E6C9'
-            ],
-            borderColor: '#ffffff',
-            borderWidth: 3
+            backgroundColor: colores.slice(0, labels.length)
           }]
         },
         options: {
           responsive: true,
           plugins: {
-            legend: {
-              position: 'bottom',
-              labels: {
+            legend: { display: false },
+            title: { display: true, text: 'Cantidad de riegos por Método' }
+          },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Método de Riego',
+                color: '#2e3d2f',
+                font: { size: 16, weight: 'bold' }
+              },
+              ticks: {
                 color: '#2e3d2f',
                 font: { size: 14 }
               }
             },
-            tooltip: {
-              callbacks: {
-                label: function(context) {
-                  return context.label + ': ' + context.raw + ' litros';
-                }
+            y: {
+              title: {
+                display: true,
+                text: 'Cantidad',
+                color: '#2e3d2f',
+                font: { size: 16, weight: 'bold' }
+              },
+              ticks: {
+                color: '#2e3d2f',
+                font: { size: 14 }
               }
             }
-          },
-          cutout: '60%'
+          }
         }
       });
     },

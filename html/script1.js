@@ -5,15 +5,22 @@ $(document).ready(function() {
     method: 'GET',
     dataType: 'json',
     success: function(datos) {
-      const labels = datos.map(item => item.label);
-      const valores = datos.map(item => item.valor);
+      const labels = datos.map((item, idx) => `Arbol ${idx + 1}`);
+      const valores = datos.map(item => Number(item.alturaCM));
+
+      // Calcular el promedio
+      const suma = valores.reduce((acc, val) => acc + val, 0);
+      const promedio = (suma / valores.length).toFixed(2);
+
+      // Mostrar el promedio en el div
+      $('#promedio-altura').text(`El promedio de altura es: ${promedio} cm`);
 
       new Chart(document.getElementById('graficoP1'), {
         type: 'bar',
         data: {
           labels: labels,
           datasets: [{
-            label: 'Altura promedio (cm)',
+            label: 'Altura (cm)',
             data: valores,
             backgroundColor: '#81c784',
             borderRadius: 6,
@@ -29,7 +36,7 @@ $(document).ready(function() {
             title: { display: false },
             tooltip: {
               callbacks: {
-                label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y} m`
+                label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y} cm`
               }
             }
           },
