@@ -36,26 +36,34 @@ $(document).ready(function () {
         '#b39ddb', '#80cbc4', '#ff8a65', '#a1887f'
       ];
 
+      // Crear gráfica tipo Pie
       new Chart(document.getElementById('graficoP2'), {
         type: 'pie',
         data: {
           labels: labels,
           datasets: [{
             data: valores,
-            backgroundColor: colores.slice(0, labels.length)
+            backgroundColor: colores.slice(0, labels.length),
+            borderColor: 'rgba(255,255,255,0.5)',
+            borderWidth: 2,
+            hoverOffset: 10
           }]
         },
         options: {
           responsive: true,
+          maintainAspectRatio: false,
           plugins: {
-            legend: { display: false },
+            legend: { position: 'bottom' },
             title: { display: false }
           }
         }
       });
 
-      // Borrar la leyenda personalizada si está
-      $('#leyendaRiego').html('');
+      let leyendaHtml = '';
+      labels.forEach((label, i) => {
+        leyendaHtml += `<span><span class="color-box" style="background:${colores[i % colores.length]}"></span>${label}</span>`;
+      });
+      $('#leyendaRiego').html(leyendaHtml);
     },
     error: function (xhr, status, error) {
       $('#info-riego').html('❌ Error al cargar los datos.');
