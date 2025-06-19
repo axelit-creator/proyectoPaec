@@ -5,49 +5,50 @@ $(document).ready(function() {
     method: 'GET',
     dataType: 'json',
     success: function(datos) {
-      const labels = datos.map(item => item.label);
-      const valores = datos.map(item => item.valor);
+      // Usar nombreTipo como etiquetas y cantidad como valores
+      const labels = datos.map(item => item.nombreTipo);
+      const valores = datos.map(item => item.cantidad);
 
-      const ctx = document.getElementById('graficaBarras').getContext('2d');
-      new Chart(ctx, {
+      // Calcular la moda (especie más frecuente)
+      const max = Math.max(...valores);
+      const modas = labels.filter((label, i) => valores[i] === max);
+
+      // Mostrar la moda debajo de la gráfica
+      if ($('#moda-tipo').length === 0) {
+        $('#graficoP8').after(
+          `<div id="moda-tipo" style="color:#388e3c; font-weight:bold; margin-top:10px; text-align:right;">
+            Moda: ${modas.join(', ')} (${max} ejemplares)
+          </div>`
+        );
+      } else {
+        $('#moda-tipo').html(`Moda: ${modas.join(', ')} (${max} ejemplares)`);
+      }
+
+      const colores = [
+        '#388e3c', '#66bb6a', '#81c784', '#a5d6a7', '#b2dfdb', '#aed581',
+        '#fbc02d', '#ffb300', '#ff7043', '#8d6e63', '#789262', '#4dd0e1',
+        '#9575cd', '#f06292', '#ba68c8', '#e57373', '#ffd54f', '#dce775'
+      ];
+
+      new Chart(document.getElementById('graficoP8'), {
         type: 'bar',
         data: {
           labels: labels,
           datasets: [{
-            label: 'Cantidad de árboles',
+            label: 'Cantidad',
             data: valores,
-            backgroundColor: [
-              '#388E3C',
-              '#66BB6A',
-              '#A5D6A7',
-              '#C8E6C9'
-            ],
-            borderColor: '#ffffff',
-            borderWidth: 1
+            backgroundColor: colores.slice(0, labels.length)
           }]
         },
         options: {
-          indexAxis: 'y', // barras horizontales
           responsive: true,
           plugins: {
             legend: { display: false },
-            tooltip: {
-              callbacks: {
-                label: function(context) {
-                  return `${context.parsed.x} árboles`;
-                }
-              }
-            }
+            title: { display: false }
           },
           scales: {
-            x: {
-              beginAtZero: true,
-              ticks: { color: '#2e3d2f' },
-              grid: { color: '#e0e0e0' }
-            },
             y: {
-              ticks: { color: '#2e3d2f' },
-              grid: { color: '#f5f5f5' }
+              beginAtZero: true
             }
           }
         }

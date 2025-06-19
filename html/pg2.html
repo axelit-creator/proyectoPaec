@@ -2,36 +2,36 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>🌿 Cantidad de árboles por método de riego</title>
+  <title>🌳 Cantidad de árboles por método de riego</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Chart.js y jQuery -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-  <!-- Tipografía Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Tipografía moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Estilos personalizados -->
+  <!-- Estilos -->
   <link rel="stylesheet" href="pgstyless.css">
 </head>
 <body>
 
   <header>
-    <h1>💧 Cantidad de árboles por método de riego</h1>
-    <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" alt="Árbol decorativo" class="imagen-arbol">
+    <h1>🌳 ¿Cuántos árboles hay por método de riego? 🌳</h1>
+    <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" alt="Árbol" class="imagen-arbol">
   </header>
 
   <div class="grafico-container">
     <canvas id="graficoP2"></canvas>
-    <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" alt="Decoración" class="decoracion-arbolitos">
-    <div class="leyenda" id="leyendaRiego"></div>
+    <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" alt="Árbol decorativo" class="decoracion-arbolitos">
+   
+    <div id="info-riego"></div>
+    <button onclick="window.location.href='index.html'" style="margin-top: 24px;">← Regresar a Home</button>
   </div>
 
-  <button onclick="window.location.href='index.html'">← Regresar a Home</button>
+  <footer>Proyecto Sembrando y Educando PAEC 🌱</footer>
 
-  <footer>💧 Visualización ecológica de métodos de riego</footer>
-
-  <script src="p2.js"></script>
+  <script src="script2.js"></script>
 </body>
 </html>

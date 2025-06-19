@@ -5,58 +5,50 @@ $(document).ready(function() {
     method: 'GET',
     dataType: 'json',
     success: function(datos) {
-      // Adaptación para la respuesta esperada
-      const labels = datos.map(item => 'Tipo ' + item.TipoArbol);
-      const valores = datos.map(item => item.CantidadAlumnos);
+      // Usar nombreTipo como etiquetas y cantidadAlumnos como valores
+      const labels = datos.map(item => item.nombreTipo);
+      const valores = datos.map(item => item.cantidadAlumnos);
 
-      const ctx = document.getElementById('treeChart').getContext('2d');
-      new Chart(ctx, {
+      // Calcular la moda (tipo con más alumnos)
+      const max = Math.max(...valores);
+      const modas = labels.filter((label, i) => valores[i] === max);
+
+      // Mostrar la moda debajo de la gráfica
+      if ($('#moda-alumnos').length === 0) {
+        $('#graficoP10').after(
+          `<div id="moda-alumnos" style="color:#388e3c; font-weight:bold; margin-top:10px; text-align:right;">
+            Moda: ${modas.join(', ')} (${max} alumnos)
+          </div>`
+        );
+      } else {
+        $('#moda-alumnos').html(`Moda: ${modas.join(', ')} (${max} alumnos)`);
+      }
+
+      const colores = [
+        '#388e3c', '#66bb6a', '#81c784', '#a5d6a7', '#b2dfdb', '#aed581',
+        '#fbc02d', '#ffb300', '#ff7043', '#8d6e63', '#789262', '#4dd0e1',
+        '#9575cd', '#f06292', '#ba68c8', '#e57373', '#ffd54f', '#dce775'
+      ];
+
+      new Chart(document.getElementById('graficoP10'), {
         type: 'bar',
         data: {
           labels: labels,
           datasets: [{
             label: 'Cantidad de alumnos',
             data: valores,
-            backgroundColor: [
-              '#a8d5ba',
-              '#cce5cc',
-              '#9fd6a3',
-              '#d1eacb',
-              '#b5deb0'
-            ],
-            borderRadius: 10,
-            borderWidth: 1
+            backgroundColor: colores.slice(0, labels.length)
           }]
         },
         options: {
           responsive: true,
           plugins: {
-            legend: {
-              display: false
-            },
-            tooltip: {
-              backgroundColor: '#fff9c4',
-              titleColor: '#2e5939',
-              bodyColor: '#2e5939'
-            }
+            legend: { display: false },
+            title: { display: false }
           },
           scales: {
             y: {
-              beginAtZero: true,
-              ticks: {
-                color: '#2e5939'
-              },
-              grid: {
-                color: '#eaeaea'
-              }
-            },
-            x: {
-              ticks: {
-                color: '#2e5939'
-              },
-              grid: {
-                display: false
-              }
+              beginAtZero: true
             }
           }
         }
