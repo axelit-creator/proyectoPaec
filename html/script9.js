@@ -4,50 +4,53 @@ $(document).ready(function() {
     method: 'GET',
     dataType: 'json',
     success: function(datos) {
-      const labels = ['Monitoreos con plagas'];
-      const valores = [datos[0].CantidadMonitoreosConPlagas];
+      // Agrupar y contar por plaga detectada
+      const conteo = {};
+      datos.forEach(item => {
+        conteo[item.plagasDetectadas] = (conteo[item.plagasDetectadas] || 0) + 1;
+      });
+      const labels = Object.keys(conteo);
+      const valores = Object.values(conteo);
 
-      const ctx = document.getElementById('grafico').getContext('2d');
-      new Chart(ctx, {
+      // Calcular la moda (plaga más frecuente)
+      const max = Math.max(...valores);
+      const modas = labels.filter((label, i) => valores[i] === max);
+
+      // Mostrar la moda debajo de la gráfica
+      if ($('#moda-plaga').length === 0) {
+        $('#graficoP9').after(
+          `<div id="moda-plaga" style="color:#388e3c; font-weight:bold; margin-top:10px; text-align:right;">
+            Moda: ${modas.join(', ')} (${max} registros)
+          </div>`
+        );
+      } else {
+        $('#moda-plaga').html(`Moda: ${modas.join(', ')} (${max} registros)`);
+      }
+
+      const colores = [
+        '#388e3c', '#66bb6a', '#81c784', '#a5d6a7', '#b2dfdb', '#aed581',
+        '#fbc02d', '#ffb300', '#ff7043', '#8d6e63', '#789262', '#4dd0e1'
+      ];
+
+      new Chart(document.getElementById('graficoP9'), {
         type: 'bar',
         data: {
           labels: labels,
           datasets: [{
-            label: 'Plagas detectadas',
+            label: 'Cantidad',
             data: valores,
-            backgroundColor: '#81c784',
-            borderRadius: 8,
-            barPercentage: 0.5,
-            categoryPercentage: 0.5
+            backgroundColor: colores.slice(0, labels.length)
           }]
         },
         options: {
           responsive: true,
-          maintainAspectRatio: false,
           plugins: {
-            legend: {
-              labels: {
-                color: '#3a5a40',
-                font: { size: 14 }
-              }
-            },
-            title: {
-              display: false
-            },
-            tooltip: {
-              callbacks: {
-                label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y}`
-              }
-            }
+            legend: { display: false },
+            title: { display: false }
           },
           scales: {
-            x: {
-              ticks: { color: '#3a5a40' },
-              grid: { display: false }
-            },
             y: {
-              ticks: { color: '#3a5a40' },
-              grid: { color: '#e0e0e0' }
+              beginAtZero: true
             }
           }
         }

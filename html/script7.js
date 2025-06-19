@@ -1,7 +1,7 @@
 // --- INICIO JQUERY + AJAX ---
 $(document).ready(function() {
   $.ajax({
-    url: 'https://equipo-7-servicios.onrender.com/api/grafica/riegosPorMetodo', // Cambia la URL si aplica
+    url: 'https://equipo-7-servicios.onrender.com/api/grafica/riegoPorArbol',
     method: 'GET',
     dataType: 'json',
     success: function(datos) {
