@@ -19,16 +19,13 @@
 
       <!-- SECCIÓN INICIO -->
       <section id="inicio" class="seccion visible">
-        <h1>
+        <h1 class="titulo">
           Sembrando y educando “PAEC” <br>
           <span class="subtitulo">Proyecto final</span>
         </h1>
         <div class="explicacion">
           <p>
-            Este proyecto tiene como objetivo demostrar el uso de bases de datos relacionales mediante
-            la creación de un entorno educativo virtual enfocado en la concientización ecológica.
-            Incluye múltiples consultas SQL, gráficas interactivas y contenidos visuales pensados para
-            mejorar la experiencia del usuario. 🌿
+            Este proyecto muestra cómo integrar bases de datos relacionales en un entorno educativo virtual, promoviendo la conciencia ecológica a través de consultas SQL, gráficas interactivas y contenidos visuales pensados para una experiencia clara y dinámica. 🌿
           </p>
         </div>
         <div class="arbolito">
@@ -57,7 +54,18 @@
       <!-- SECCIÓN MÁS SOBRE PAEC -->
       <section id="paec" class="seccion oculto">
         <h2>🌱 Más sobre PAEC</h2>
-        <p>El proyecto “Sembrando y Educando PAEC” nace de la necesidad de concientizar a la comunidad escolar sobre la importancia del medio ambiente, integrando la educación ambiental con actividades prácticas y participativas. Su propósito es fomentar hábitos sostenibles y una cultura ecológica desde las aulas, promoviendo el respeto por la naturaleza, el trabajo colaborativo y la participación activa de estudiantes, docentes y familias para fortalecer el vínculo entre el aula,la escuela y la comunidad.</p>
+        <p>
+          El proyecto “Sembrando y Educando PAEC” nace de la necesidad de concientizar a la comunidad escolar sobre la importancia del medio ambiente, integrando la educación ambiental con actividades prácticas y participativas. Su propósito es fomentar hábitos sostenibles y una cultura ecológica desde las aulas, promoviendo el respeto por la naturaleza, el trabajo colaborativo y la participación activa de estudiantes, docentes y familias para fortalecer el vínculo entre el aula, la escuela y la comunidad.
+        </p>
+        <div style="text-align:center; margin-top: 18px;">
+          <span>Si quieres saber más sobre el PAEC, ingresa al siguiente enlace:</span><br>
+          <a href="https://educacionmediasuperior.sep.gob.mx/work/models/sems/Resource/13634/1/images/Programa%20Aula,%20Escuela%20y%20Comunidad_(Documento).pdf"
+             target="_blank"
+             rel="noopener"
+             style="display:inline-block; margin-top:8px; color:#388e3c; font-weight:bold; word-break:break-all;">
+            Documento oficial PAEC (PDF)
+          </a>
+        </div>
       </section>
 
       <!-- SECCIÓN GRÁFICAS -->
@@ -83,6 +91,30 @@
     </div>
   </div>
 
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <!-- Tu JS -->
   <script src="home.js"></script>
+
+  <!-- Animación inicial con GSAP -->
+  <script>
+  window.onload = () => {
+    let tl = gsap.timeline();
+    tl.from(".titulo", { duration: 0.8, y: -50, opacity: 0 })
+      .from(".explicacion", { duration: 0.6, x: -100, opacity: 0 }, "-=0.4")
+      .from(".arbolito img", { duration: 0.6, scale: 0, ease: "back.out(1.7)" }, "-=0.4");
+
+    // Balanceo suave infinito del árbol
+    gsap.to(".arbolito img", {
+      rotation: 5,
+      yoyo: true,
+      repeat: -1,
+      duration: 2,
+      ease: "sine.inOut"
+    });
+  };
+</script>
+
 </body>
 </html>

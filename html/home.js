@@ -2,13 +2,10 @@ function mostrarSeccion(id) {
   const activa = document.getElementById(id);
   const secciones = document.querySelectorAll('.seccion');
 
-  // Oculta todas con animación de salida
   secciones.forEach(seccion => {
     if (seccion.classList.contains('visible')) {
       seccion.classList.add('fade-out');
       seccion.classList.remove('fade-in');
-      
-      // Espera a que termine la animación antes de ocultar
       setTimeout(() => {
         seccion.classList.remove('visible');
         seccion.classList.add('oculto');
@@ -17,11 +14,17 @@ function mostrarSeccion(id) {
     }
   });
 
-  // Después de un momento, muestra la nueva sección
   setTimeout(() => {
     activa.classList.remove('oculto');
     activa.classList.add('visible');
-    activa.classList.add('fade-in');
+
+    // 🚀 Animación GSAP cuando cambia de sección
+    gsap.from(activa, {
+      duration: 0.7,
+      opacity: 0,
+      y: 30,
+      ease: "power2.out"
+    });
   }, 550);
 }
 
