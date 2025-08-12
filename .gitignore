@@ -1,5 +1,18 @@
+# Archivos actuales
 Proyecto-Jorge/
 prueba/index.html
 prueba/script.js
 prueba/styles.css
 apiFlask/.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env
+.venv
+env/
+venv/
+node_modules/
+.DS_Store
+Thumbs.db
